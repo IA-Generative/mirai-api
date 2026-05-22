@@ -1,0 +1,34 @@
+{
+  "name": "mirai-api",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "dev": "vitepress --port 8080 --host 0.0.0.0 dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs",
+    "lint": "eslint . --ext .ts,.js,.vue,.md,.yml,.yaml --max-warnings=0",
+    "lint:fix": "eslint . --ext .ts,.js,.vue,.md,.yml,.yaml --fix",
+    "lint:all": "bun run lint",
+    "docker:build": "docker build --tag transversal-doc --target prod .",
+    "docker:run": "docker run --publish 8080:8080 --rm transversal-doc"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^9.0.0",
+    "@gouvminint/vue-dsfr": "^8.16.1",
+    "@shikijs/vitepress-twoslash": "^4.1.0",
+    "eslint": "^10.4.0",
+    "eslint-plugin-markdown": "^5.1.0",
+    "eslint-plugin-yaml": "^1.1.3",
+    "mermaid": "^10.4.0",
+    "typescript": "^6.0.3",
+    "vitepress": "^1.6.4",
+    "vitepress-plugin-mermaid": "^1.0.0",
+    "vue": "^3.5.34",
+    "yaml-eslint-parser": "^2.0.0"
+  }
+}

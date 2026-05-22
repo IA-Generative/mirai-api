@@ -1,0 +1,15 @@
+services:
+  mirai-api:
+    container_name: mirai-api
+    pull_policy: build
+    restart: always
+    working_dir: /app
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+    - 8080:8080
+    volumes:
+    - ./:/app
+    - /app/node_modules

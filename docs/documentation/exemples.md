@@ -42,10 +42,10 @@ for chunk in stream:
 
 ```js
 const response = await client.chat.completions.create({
-  model: "tools",
-  messages: [{ role: "user", content: "Bonjour" }],
-});
-console.log(response.choices[0].message.content);
+  model: 'tools',
+  messages: [{ role: 'user', content: 'Bonjour' }],
+})
+console.log(response.choices[0].message.content)
 ```
 
 ---
@@ -73,19 +73,19 @@ print(result.text)
 ### JavaScript
 
 ```js
-import OpenAI from "openai";
-import fs from "fs";
+import fs from 'node:fs'
+import OpenAI from 'openai'
 
 const client = new OpenAI({
-  baseURL: "https://gateway.api.ai.numerique-interieur.com",
-  apiKey: "<TOKEN>",
-});
+  baseURL: 'https://gateway.api.ai.numerique-interieur.com',
+  apiKey: '<TOKEN>',
+})
 
 const result = await client.audio.transcriptions.create({
-  model: "faster-whisper-large-v3-turbo",
-  file: fs.createReadStream("interview.wav"),
-});
-console.log(result.text);
+  model: 'faster-whisper-large-v3-turbo',
+  file: fs.createReadStream('interview.wav'),
+})
+console.log(result.text)
 ```
 
 ---
