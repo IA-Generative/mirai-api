@@ -9,11 +9,12 @@ imageCredentials:
   username: ''
   password: ''
   email: ''
+imagePullSecrets: registry-pullsecret
 
 docs:
   replicaCount: 1
   image:
-    repository: ghcr.io/dnum-mi/transversal-doc
+    repository: ghcr.io/ia-generative/mirai-api/docs
     pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
     tag: latest
@@ -36,18 +37,18 @@ docs:
     port: 80
   ingress:
     enabled: true
-    className: traefik
+    className: mirai-nginx
     annotations:
-      cert-manager.io/cluster-issuer: le-fabnum-prod
+      cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts:
-      - host: docs.fabrique-numerique.fr
+      - host: api.mirai.cpin.numerique-interieur.com
         paths:
           - path: /
             pathType: Prefix
     tls:
-      - secretName: docs.fabrique-numerique.fr
+      - secretName: api.mirai.cpin.numerique-interieur.com-tls
         hosts:
-          - docs.fabrique-numerique.fr
+          - api.mirai.cpin.numerique-interieur.com
   resources:
     requests:
       cpu: 100m

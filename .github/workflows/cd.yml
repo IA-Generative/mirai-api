@@ -1,0 +1,18 @@
+name: CD
+
+on:
+  push:
+    branches:
+    - main
+  workflow_dispatch:
+
+jobs:
+  sync-cpin:
+    uses: dnum-mi/fabnum-cicd/.github/workflows/sync-cpin.yml@v0
+    with:
+      GITLAB_URL: ${{ vars.GITLAB_URL }}
+      GIT_MIRROR_PROJECT_ID: ${{ vars.GIT_MIRROR_PROJECT_ID }}
+      BRANCH_TO_SYNC: ${{ github.ref_name }}
+      REPOSITORY_NAME: ${{ vars.REPOSITORY_NAME }}
+    secrets:
+      GIT_MIRROR_TOKEN: ${{ secrets.GIT_MIRROR_TOKEN }}

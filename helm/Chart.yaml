@@ -1,16 +1,13 @@
 apiVersion: v2
-name: transversal-doc
-description: A Helm chart to deploy ...
+name: mirai-api
+description: A Helm chart to deploy the MirAI API documentation site
 type: application
 keywords: []
-home: https://github.com/dnum-mi/transversal-doc
+home: https://github.com/IA-Generative/mirai-api
 sources:
-  - https://github.com/dnum-mi/transversal-doc
+  - https://github.com/IA-Generative/mirai-api
 dependencies: []
-maintainers:
-  - name: this-is-tobi
-    email: this-is-tobi@proton.me
-    url: https://github.com/this-is-tobi
+maintainers: []
 # icon: A URL to an SVG or PNG image to be used as an icon (optional).
 deprecated: false
 annotations: {}
