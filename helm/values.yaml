@@ -9,7 +9,8 @@ imageCredentials:
   username: ''
   password: ''
   email: ''
-imagePullSecrets: registry-pullsecret
+imagePullSecrets:
+  - name: registry-pullsecret
 
 docs:
   replicaCount: 1
