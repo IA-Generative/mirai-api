@@ -29,23 +29,7 @@ docker-build-docs:
   variables:
     WORKING_DIR: .
     DOCKERFILE: ./Dockerfile
-    IMAGE_NAMES: ""
-  before_script:
-    - |
-      SHORT_SHA=$(echo $CI_COMMIT_SHA | cut -c1-7)
-      TAGS="docs:$SHORT_SHA"
-      if [ "$CI_COMMIT_REF_NAME" != "main" ]; then
-        TAGS="$TAGS docs:$CI_COMMIT_REF_SLUG"
-      fi
-      if [ -n "$CI_COMMIT_TAG" ]; then
-        TAG_WITHOUT_V=${CI_COMMIT_TAG#v}
-        TAGS="$TAGS docs:$TAG_WITHOUT_V"
-        if echo "$CI_COMMIT_TAG" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
-          TAGS="$TAGS docs:latest"
-        fi
-      fi
-      export IMAGE_NAMES="$TAGS"
-      echo "Building with tags: $IMAGE_NAMES"
+    IMAGE_NAMES: "mirai-api/docs:latest"
 
 helm-package-push:
   stage: helm-package
