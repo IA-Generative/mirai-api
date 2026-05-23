@@ -3,9 +3,11 @@
 FROM oven/bun:latest AS dev
 
 WORKDIR /app
+RUN apt-get update && apt-get install -y --no-install-recommends git && rm -rf /var/lib/apt/lists/*
 COPY package.json ./
 COPY bun.lock ./
 RUN bun install --frozen-lockfile
+COPY .git ./.git
 COPY docs ./docs
 ENTRYPOINT [ "bun", "run", "dev" ]
 
