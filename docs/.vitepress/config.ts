@@ -4,7 +4,7 @@ import mermaidPlugin from 'vitepress-plugin-mermaid'
 
 // Restored config — simplified and adapted to this repository's docs.
 export default defineConfig({
-  title: 'CoFabNum',
+  title: 'Mirai API',
   description: 'Conventions et bonnes pratiques',
   markdown: {
     codeTransformers: [transformerTwoslash() as unknown as any],
