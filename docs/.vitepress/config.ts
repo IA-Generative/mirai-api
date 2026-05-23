@@ -12,12 +12,13 @@ export default defineConfig({
   },
   themeConfig: {
     nav: [
+      { text: 'Présentation', link: '/presentation/' },
       { text: 'Documentation', link: '/documentation/' },
       { text: 'Fonctionnalités', link: '/fonctionnalites/' },
-      { text: 'Présentation', link: '/presentation/' },
       { text: 'Support', link: '/support/' },
     ],
     sidebar: [
+      { text: 'Présentation', link: '/presentation/' },
       {
         text: 'Documentation',
         link: '/documentation/',
@@ -40,7 +41,6 @@ export default defineConfig({
           { text: 'Transcription', link: '/fonctionnalites/transcription' },
         ],
       },
-      { text: 'Présentation', link: '/presentation/' },
       { text: 'Support', link: '/support/' },
     ],
     outline: { level: [2, 3], label: 'Sur cette page' },
