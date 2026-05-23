@@ -29,7 +29,7 @@ docker-build-docs:
   variables:
     WORKING_DIR: .
     DOCKERFILE: ./Dockerfile
-    IMAGE_NAMES: "mirai-api/docs:latest"
+    IMAGE_NAMES: "docs:latest"
 
 helm-package-push:
   stage: helm-package
