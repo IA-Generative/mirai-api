@@ -15,7 +15,7 @@ imagePullSecrets:
 docs:
   replicaCount: 1
   image:
-    repository: ghcr.io/ia-generative/mirai-api/docs
+    repository: harbor.sdid.cpin.numerique-interieur.com/miraiapi/docs
     pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
     tag: latest
