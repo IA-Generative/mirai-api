@@ -89,7 +89,6 @@ Architecture du dépôt
 --------------------
 
 - [docs/](docs/) — site de documentation (VitePress)
-- [src/](src/) — contenus et ressources complémentaires
 - [nginx/](nginx/) — configuration NGINX utilisée pour l'image de production ([nginx/nginx.conf](nginx/nginx.conf))
 - [helm/](helm/) — chart Helm pour déploiement Kubernetes
 - `Dockerfile` — build multi-stage (Bun → NGINX prod)
