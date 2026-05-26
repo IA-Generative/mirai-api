@@ -8,8 +8,8 @@ Les quotas sont déterminés automatiquement à partir du token d'authentificati
 
 | Type | Description | Token |
 |---|---|---|
-| **Utilisateur** | Personne physique accédant à l'API directement (tests, scripts, outils internes) | Token opaque Zitadel |
-| **Application** | Compte de service intégré dans une application ou un pipeline (production) | Token JWT Zitadel (client ID / secret) / Token opaque Zitadel |
+| **Utilisateur** | Personne physique accédant à l'API directement (tests, scripts, outils internes) | Via MyMirAI *(pas encore disponible)* |
+| **Application** | Compte de service intégré dans une application ou un pipeline (production) | Via la SDID |
 
 ---
 

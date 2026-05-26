@@ -6,13 +6,11 @@ Identifie et segmente les tours de parole dans un fichier audio : qui parle, et 
 
 ## Endpoints
 
-| Méthode | Endpoint | Description |
-|---|---|---|
-| `POST` | `/v1/audio/diarizations` | Diarisation synchrone |
-| `POST` | `/v1/diarize` | Alias synchrone |
-| `POST` | `/jobs/audio` | Diarisation asynchrone (recommandé) |
-
-Pour le mode async, passer `model=pyannote-diarization` dans le corps de la requête.
+| Méthode | Endpoint | Mode | Description |
+|---|---|---|---|
+| `POST` | `/v1/audio/diarizations` | Sync-over-Kafka | Diarisation, résultat inline |
+| `POST` | `/v1/diarize` | Sync-over-Kafka | Alias synchrone |
+| `POST` | `/jobs/audio` | Async | Diarisation asynchrone (recommandé) |
 
 ---
 
@@ -20,8 +18,32 @@ Pour le mode async, passer `model=pyannote-diarization` dans le corps de la requ
 
 | Attribut | Valeur |
 |---|---|
-| Formats acceptés | `.mp3` `.wav` `.m4a` `.ogg` `.flac` |
-| Taille maximale | 500 Mo |
+| Formats acceptés | `.mp3` `.mp4` `.wav` `.m4a` `.ogg` `.flac` |
+| Taille maximale | 1 Go |
+
+---
+
+## Paramètres
+
+### Requis
+
+| Paramètre | Type | Description |
+|---|---|---|
+| `file` | fichier | Fichier audio à diariser |
+| `model` | string | Modèle à utiliser : `pyannote-diarization` |
+
+### Optionnels
+
+| Paramètre | Type | Description |
+|---|---|---|
+| `num_speakers` | integer | Nombre exact de locuteurs si connu (court-circuite la détection automatique) |
+| `min_speakers` | integer | Nombre minimal de locuteurs attendus |
+| `max_speakers` | integer | Nombre maximal de locuteurs attendus |
+| `min_duration_off` | float | Durée minimale de silence entre deux segments d'un même locuteur (en secondes) |
+| `clustering_threshold` | float | Seuil de clustering VBx |
+| `clustering_Fa` | float | Probabilité de fausse alarme VBx |
+| `clustering_Fb` | float | Probabilité de manqué VBx |
+| `clustering_min_cluster_size` | integer | Taille minimale de cluster (clustering agglomératif) |
 
 ---
 
@@ -31,7 +53,7 @@ Benchmarks réalisés en mai 2026 sur 40 jobs complétés. **Taux d'erreur : 0% 
 
 ### Fichiers courts (≈ 105 s d'audio)
 
-| Mode de livraison | Jobs | Inférence min | Inférence moy | Inférence max | RTF moyen |
+| Mode | Jobs | Inférence min | Inférence moy | Inférence max | RTF moyen |
 |---|---|---|---|---|---|
 | Poll | 15 | 8 s | 14 s | 28 s | 0.129 |
 | Webhook | 15 | 11 s | 21 s | 40 s | 0.197 |
@@ -40,12 +62,12 @@ Benchmarks réalisés en mai 2026 sur 40 jobs complétés. **Taux d'erreur : 0% 
 
 ### Fichiers longs (1 heure d'audio)
 
-| Mode de livraison | Jobs | Inférence min | Inférence moy | Inférence max | RTF moyen |
+| Mode | Jobs | Inférence min | Inférence moy | Inférence max | RTF moyen |
 |---|---|---|---|---|---|
 | Poll | 5 | 345 s | **427 s** | 556 s | 0.119 |
 | Webhook | 5 | 245 s | **326 s** | 420 s | 0.091 |
 
-> Une heure d'audio est diarisée en **5 min 26 s** (webhook) à **7 min 07 s** (poll) en moyenne — RTF bien inférieur au temps réel.
+> Une heure d'audio est diarisée en **5 min 26 s** (webhook) à **7 min 07 s** (poll) en moyenne.
 
 ---
 
@@ -73,7 +95,7 @@ Benchmarks réalisés en mai 2026 sur 40 jobs complétés. **Taux d'erreur : 0% 
 
 ---
 
-## Exemple d'utilisation
+## Exemples
 
 ### Synchrone (curl)
 
@@ -84,17 +106,28 @@ curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/diarization
   -F "file=@reunion.wav"
 ```
 
+### Avec nombre de locuteurs forcé
+
+```bash
+curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/diarizations \
+  -H "Authorization: Bearer <TOKEN>" \
+  -F "model=pyannote-diarization" \
+  -F "file=@entretien.wav" \
+  -F "num_speakers=2"
+```
+
 ### Asynchrone avec webhook (recommandé pour fichiers > 30 s)
 
 ```bash
 curl -X POST https://gateway.api.ai.numerique-interieur.com/jobs/audio \
   -H "Authorization: Bearer <TOKEN>" \
   -F "model=pyannote-diarization" \
+  -F "operation=diarization" \
   -F "file=@conference.mp3" \
   -F "callback_url=https://mon-app.example.com/hooks/diarization"
 ```
 
-→ Voir [Modes synchrone et asynchrone](/documentation/modes) pour le cycle de vie complet d'un job async.
+→ Voir [Modes d'appel](/documentation/modes) pour le cycle de vie complet d'un job async.
 
 ---
 

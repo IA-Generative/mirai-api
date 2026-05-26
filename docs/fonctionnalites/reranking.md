@@ -29,26 +29,27 @@ Benchmark de charge réalisé en mai 2026 (50 VUs simultanés, ~24 min).
 {
   "model": "bge-reranker-v2-m3",
   "query": "Comment fonctionne la diarisation audio ?",
-  "documents": [
+  "texts": [
     "La diarisation est le processus qui consiste à segmenter un audio par locuteur.",
     "Le modèle pyannote utilise des embeddings de locuteurs pour identifier les tours de parole.",
     "La transcription convertit la parole en texte sans identifier les locuteurs.",
     "Le reranking est utilisé pour améliorer la pertinence des résultats de recherche."
   ],
-  "top_n": 3
+  "return_text": true,
+  "raw_scores": false
 }
 ```
 
 ## Format de réponse
 
+La réponse est un tableau trié par score décroissant. Le champ `text` n'est présent que si `return_text: true`.
+
 ```json
-{
-  "results": [
-    { "index": 0, "relevance_score": 0.98, "document": "La diarisation est le processus..." },
-    { "index": 1, "relevance_score": 0.91, "document": "Le modèle pyannote utilise..." },
-    { "index": 3, "relevance_score": 0.12, "document": "Le reranking est utilisé..." }
-  ]
-}
+[
+  { "index": 0, "score": 0.98, "text": "La diarisation est le processus..." },
+  { "index": 1, "score": 0.91, "text": "Le modèle pyannote utilise..." },
+  { "index": 3, "score": 0.12, "text": "Le reranking est utilisé..." }
+]
 ```
 
 ---
@@ -66,13 +67,13 @@ response = httpx.post(
     json={
         "model": "bge-reranker-v2-m3",
         "query": "Quelles sont les obligations du fonctionnaire ?",
-        "documents": chunks,  # liste de strings issues de votre index vectoriel
-        "top_n": 5,
+        "texts": chunks,  # liste de strings issues de votre index vectoriel
+        "return_text": True,
     }
 )
 
-ranked = response.json()["results"]
-top_chunks = [r["document"] for r in ranked]
+ranked = response.json()  # tableau trié par score décroissant
+top_chunks = [r["text"] for r in ranked]
 ```
 
 ### curl
@@ -84,8 +85,8 @@ curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/rerank \
   -d '{
     "model": "bge-reranker-v2-m3",
     "query": "obligations du fonctionnaire",
-    "documents": ["doc1", "doc2", "doc3"],
-    "top_n": 2
+    "texts": ["doc1", "doc2", "doc3"],
+    "return_text": true
   }'
 ```
 

@@ -47,4 +47,7 @@ Les performances sont issues de benchmarks réels, pas de promesses marketing. L
 
 ## Accès
 
-L'accès à la plateforme est soumis à authentification via **Zitadel**. Pour obtenir un token, consulter la section [Authentification](/documentation/authentification).
+| Type | Obtention |
+|---|---|
+| **Utilisateur individuel** | Via **MyMirAI** — *pas encore disponible* |
+| **Application / compte de service** | Via la SDID — voir [Authentification](/documentation/authentification) |

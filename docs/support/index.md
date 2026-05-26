@@ -4,11 +4,13 @@
 
 ## Contact
 
-Pour toute demande d'accès, question technique ou incident, contacter la **SDID** :
+Pour toute demande d'accès **Application**, question technique ou incident, contacter la **SDID** :
 
-> [À COMPLÉTER — canal Tchap / email / outil de ticketing]
+> **Email :** [service-team-sdid@interieur.gouv.fr](mailto:service-team-sdid@interieur.gouv.fr)
 
-**Demande d'accès :** préciser le type de consommateur (Utilisateur ou Application) et les services souhaités. La SDID crée le compte Zitadel et transmet les credentials. Voir [Authentification](/documentation/authentification).
+**Accès Application :** préciser les services souhaités et l'usage applicatif. La SDID crée le compte Zitadel et transmet le token. Voir [Authentification](/documentation/authentification).
+
+> **Accès Utilisateur individuel :** les tokens individuels seront délivrés via **MyMirAI** — pas encore disponible. Aucun accès manuel n'est possible en attendant.
 
 ---
 

@@ -6,23 +6,27 @@ L'accès à MirAI API's est sécurisé via **Zitadel**. Chaque consommateur — 
 
 ## Token
 
-Le token est fourni par la SDID lors de l'ouverture d'accès. Il est identique pour les deux types de consommateurs :
+| Type | Usage | Obtention | Quotas |
+|---|---|---|---|
+| **Utilisateur** | Personne physique — tests, scripts, outils internes | Via **MyMirAI** *(pas encore disponible)* | Voir [Quotas](/documentation/quotas#utilisateur) |
+| **Application** | Compte de service intégré dans un pipeline ou une application | Via la **SDID** | Voir [Quotas](/documentation/quotas#application) |
 
-| Type | Usage | Quotas |
-|---|---|---|
-| **Utilisateur** | Personne physique — tests, scripts, outils internes | Voir [Quotas](/documentation/quotas#utilisateur) |
-| **Application** | Compte de service intégré dans un pipeline ou une application | Voir [Quotas](/documentation/quotas#application) |
-
-**Durée de validité : 1 an.** À l'approche de l'expiration, contacter la SDID pour renouveler le token avant interruption de service.
+**Durée de validité : 1 an.** À l'approche de l'expiration, renouveler le token avant interruption de service (via MyMirAI pour les Utilisateurs, via la SDID pour les Applications).
 
 ---
 
 ## Obtenir un accès
 
-L'accès à MirAI API's n'est pas en libre-service. Pour obtenir un token :
+### Utilisateur
+
+Les tokens individuels sont délivrés via l'application **MyMirAI** — **pas encore disponible**. L'ouverture des accès individuels sera annoncée lors du lancement de MyMirAI.
+
+### Application
+
+L'accès applicatif n'est pas en libre-service :
 
 1. Contacter la **SDID** via le [canal de support](/support/)
-2. Préciser le type de consommateur (**Utilisateur** ou **Application**) et le ou les services souhaités
+2. Préciser les services souhaités et l'usage applicatif
 3. La SDID crée le compte Zitadel et transmet le token
 
 ---
@@ -51,7 +55,7 @@ from openai import OpenAI
 
 client = OpenAI(
     base_url="https://gateway.api.ai.numerique-interieur.com",
-    api_key="<TOKEN>"   # token Zitadel ici
+    api_key="<TOKEN>"
 )
 ```
 
@@ -61,6 +65,6 @@ client = OpenAI(
 
 | Code | Signification | Action |
 |---|---|---|
-| `401 Unauthorized` | Token absent, expiré ou malformé | Vérifier le header `Authorization: Bearer <TOKEN>` et la date d'expiration du token (validité 1 an) |
+| `401 Unauthorized` | Token absent, expiré ou malformé | Vérifier le header `Authorization: Bearer <TOKEN>` et la date d'expiration (validité 1 an) |
 | `403 Forbidden` | Token valide mais accès refusé | Vérifier que le token dispose des droits nécessaires |
 | `429 Too Many Requests` | Quota dépassé | Voir [Quotas et plans](/documentation/quotas) |

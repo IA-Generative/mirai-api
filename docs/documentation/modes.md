@@ -1,20 +1,50 @@
 # Modes d'appel
 
-MirAI API's propose deux modes d'appel selon la durée du traitement et les contraintes de votre application.
+MirAI API's propose trois modes d'appel selon la durée du traitement et les contraintes de votre application.
+
+| Mode | Endpoint | Réponse | Adapté à |
+|---|---|---|---|
+| [Synchrone direct](#mode-synchrone-direct) | `POST /v1/*` | Inline, connexion maintenue | LLM, embeddings, reranking |
+| [Synchrone via Kafka](#sync-over-kafka) | `POST /v1/audio/*` | Inline, connexion maintenue | Audio (priorité, résultat inline) |
+| [Asynchrone](#mode-asynchrone) | `POST /jobs/audio` | `job_id` → polling ou webhook | Audio long, batch |
 
 ---
 
-## Mode synchrone
+## Mode synchrone direct
 
-La connexion reste ouverte jusqu'à la fin du traitement. La réponse est retournée directement dans la réponse HTTP.
+La connexion reste ouverte jusqu'à la fin du traitement. La requête est forwardée directement au backend d'inférence.
 
-**Adapté aux :** LLM, embeddings, reranking, et fichiers audio courts (< 30 s).
+**Utilisé par :** LLM (`/v1/chat/completions`), embeddings (`/v1/embeddings`), reranking (`/v1/rerank`).
 
 ```bash
+curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/chat/completions \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{"model": "chat-smart", "messages": [{"role": "user", "content": "Bonjour"}]}'
+```
+
+---
+
+## Sync-over-Kafka
+
+Même endpoint que le mode direct (`POST /v1/audio/*`), mais le gateway route le fichier via Kafka avec **priorité sur les jobs asynchrones**. La connexion reste ouverte ; le résultat est retourné inline à la complétion.
+
+**Comportement interne :**
+1. Le fichier est uploadé en S3
+2. L'événement est publié sur le topic Kafka prioritaire
+3. Le relay traite le job en priorité (met en attente les jobs async en cours)
+4. Le gateway reçoit la notification Redis et retourne le résultat directement
+
+Pour les longues inférences (> 20 s), le gateway envoie des **newlines keepalive** toutes les 20 s pour éviter les coupures de proxies intermédiaires. Timeout maximum : 15 min.
+
+> Le job Kafka prioritaire et ses fichiers S3 sont supprimés dès la complétion — ils ne sont pas conservés 24 h contrairement aux jobs async.
+
+```bash
+# Même endpoint que le direct — le routage via Kafka est transparent
 curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/transcriptions \
   -H "Authorization: Bearer <TOKEN>" \
-  -F "file=@interview.wav"
-# → {"text": "Bonjour, bienvenue..."}
+  -F "file=@conference.mp3"
+# → {"text": "Bonjour, bienvenue..."} (retourné inline après inférence)
 ```
 
 ---
@@ -23,7 +53,7 @@ curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/transcripti
 
 Le fichier est soumis, un `job_id` est retourné immédiatement. Le résultat est récupéré ultérieurement par **polling** ou via **webhook**.
 
-**Adapté aux :** fichiers audio longs (> 30 s), traitements en batch, architectures événementielles.
+**Adapté aux :** traitements en batch, architectures événementielles, fichiers volumineux.
 
 ### Cycle de vie d'un job
 
@@ -102,7 +132,7 @@ echo $RESPONSE | jq '.result'
 
 ## Webhook
 
-Fournir un `callback_url` pour être notifié dès la complétion du job, sans polling.
+Fournir un `callback_url` pour être notifié dès la complétion du job async, sans polling.
 
 ```bash
 curl -X POST https://gateway.api.ai.numerique-interieur.com/jobs/audio \
@@ -119,7 +149,7 @@ En cas d'échec HTTP côté récepteur : **3 tentatives** avec backoff exponenti
 
 ## Lister ses jobs
 
-Chaque consommateur peut consulter ses propres jobs des 72 dernières heures :
+Chaque consommateur peut consulter ses propres jobs des **24 dernières heures** :
 
 ```bash
 curl "https://gateway.api.ai.numerique-interieur.com/jobs?limit=10" \
@@ -130,4 +160,6 @@ curl "https://gateway.api.ai.numerique-interieur.com/jobs?limit=10" \
 
 ## Durée de rétention
 
-> Les résultats sont automatiquement supprimés après leur **première lecture** ou au bout de **24 heures**. Stocker le résultat côté application dès réception.
+Les jobs async et leurs résultats sont conservés **24 heures** dans Redis. Le fichier résultat (S3) est supprimé dès la **première lecture** — stocker le résultat côté application dès réception.
+
+> Les jobs sync-over-Kafka ne sont pas listables et ne persistent pas : résultat et job record sont supprimés dès la complétion.

@@ -144,15 +144,15 @@ response = httpx.post(
     json={
         "model": "bge-reranker-v2-m3",
         "query": "obligations du fonctionnaire territorial",
-        "documents": [
+        "texts": [
             "Le fonctionnaire est soumis au principe de neutralité...",
             "Les congés annuels sont fixés par décret...",
             "L'obligation de réserve s'applique en dehors du service...",
         ],
-        "top_n": 2,
+        "return_text": True,
     }
 )
-results = response.json()["results"]
+results = response.json()  # tableau trié par score décroissant
 ```
 
 ---
@@ -185,12 +185,12 @@ reranked = httpx.post(
     json={
         "model": "bge-reranker-v2-m3",
         "query": question,
-        "documents": chunks,
-        "top_n": 5,
+        "texts": chunks,
+        "return_text": True,
     }
-).json()["results"]
+).json()
 
-context = "\n\n".join(r["document"] for r in reranked)
+context = "\n\n".join(r["text"] for r in reranked)
 
 # 4. Génération
 response = client.chat.completions.create(
