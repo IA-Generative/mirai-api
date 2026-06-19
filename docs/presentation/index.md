@@ -25,7 +25,7 @@ Tous les endpoints LLM, audio et embeddings sont compatibles avec le SDK OpenAI.
 Les modèles tournent sur des serveurs GPU hébergés en France chez **Scaleway**, opérateur cloud français. Les données restent sur le territoire national et ne transitent pas vers des fournisseurs de cloud extra-européens.
 
 ### Async natif
-Les traitements longs (audio 1 h, batches de documents) passent par un pipeline asynchrone Kafka : soumettez votre job, récupérez le résultat quand il est prêt — par polling ou webhook — sans maintenir la connexion ouverte.
+Les traitements longs (audio 1 h, batches de documents) passent par une file asynchrone Redis : soumettez votre job, récupérez le résultat quand il est prêt — par polling ou webhook — sans maintenir la connexion ouverte.
 
 ### Modèles mesurés
 Les performances sont issues de benchmarks réels, pas de promesses marketing. Les chiffres présentés dans cette documentation sont mesurés en conditions de production.
@@ -38,7 +38,7 @@ Toutes les requêtes transitent par une gateway centralisée accessible à l'adr
 
 - **Routage** — chaque requête est dirigée vers le bon service selon le modèle et le type d'opération
 - **Rate limiting** — application des quotas par consommateur en fenêtre fixe
-- **Détection PII** — les données personnelles identifiables (adresses e-mail, IBAN, SIREN) sont détectées avant transmission au modèle
+- **Détection PII** — les données personnelles identifiables (e-mail, téléphone, IBAN, carte bancaire, SIREN/SIRET) sont détectées et bloquées avant transmission au modèle
 - **Cache** — les requêtes identiques sont mises en cache (TTL configurable) pour réduire la latence et la consommation
 - **Traitement asynchrone** — les jobs longs (audio, batches) passent par une file avec scaling automatique
 - **Observabilité** — métriques et traces exposées par consommateur
