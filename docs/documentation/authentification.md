@@ -1,32 +1,34 @@
 # Authentification
 
-L'accès à MirAI API's est sécurisé via **Zitadel**. Chaque consommateur — Utilisateur ou Application — reçoit un **token opaque** valable **1 an**.
+L'accès à MirAI API's est sécurisé via **Zitadel**. Chaque consommateur reçoit un **token opaque** valable **1 an**, associé à un niveau d'accès qui détermine ses quotas.
 
 ---
 
 ## Token
 
-| Type | Usage | Obtention | Quotas |
+| Niveau | Usage | Obtention | Quotas |
 |---|---|---|---|
-| **Utilisateur** | Personne physique — tests, scripts, outils internes | Via **MyMirAI** *(pas encore disponible)* | Voir [Quotas](/documentation/quotas#utilisateur) |
-| **Application** | Compte de service intégré dans un pipeline ou une application | Via la **SDID** | Voir [Quotas](/documentation/quotas#application) |
+| **Découverte** | Utilisateur individuel — tests, scripts, outils personnels | Via **MyMirAI** *(pas encore disponible)* | Voir [Quotas](/documentation/quotas) |
+| **Intégration** | Application en développement ou phase pilote | Via la **SDID** | Voir [Quotas](/documentation/quotas) |
+| **Production** | Application métier standard déployée en production | Via la **SDID** | Voir [Quotas](/documentation/quotas) |
+| **Critique** | Service haute disponibilité ou forte volumétrie | Via la **SDID** — sur demande | Voir [Quotas](/documentation/quotas) |
 
-**Durée de validité : 1 an.** À l'approche de l'expiration, renouveler le token avant interruption de service (via MyMirAI pour les Utilisateurs, via la SDID pour les Applications).
+**Durée de validité : 1 an.** À l'approche de l'expiration, renouveler le token avant interruption de service via le même canal d'obtention.
 
 ---
 
 ## Obtenir un accès
 
-### Utilisateur
+### Niveau Découverte
 
 Les tokens individuels sont délivrés via l'application **MyMirAI** — **pas encore disponible**. L'ouverture des accès individuels sera annoncée lors du lancement de MyMirAI.
 
-### Application
+### Niveaux Intégration, Production et Critique
 
 L'accès applicatif n'est pas en libre-service :
 
 1. Contacter la **SDID** via le [canal de support](/support/)
-2. Préciser les services souhaités et l'usage applicatif
+2. Préciser le niveau souhaité, les services utilisés et le contexte applicatif
 3. La SDID crée le compte Zitadel et transmet le token
 
 ---
@@ -67,4 +69,4 @@ client = OpenAI(
 |---|---|---|
 | `401 Unauthorized` | Token absent, expiré ou malformé | Vérifier le header `Authorization: Bearer <TOKEN>` et la date d'expiration (validité 1 an) |
 | `403 Forbidden` | Token valide mais accès refusé | Vérifier que le token dispose des droits nécessaires |
-| `429 Too Many Requests` | Quota dépassé | Voir [Quotas et plans](/documentation/quotas) |
+| `429 Too Many Requests` | Quota dépassé | Voir [Quotas et niveaux d'accès](/documentation/quotas) |

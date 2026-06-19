@@ -1,15 +1,19 @@
-# Quotas et plans
+# Quotas et niveaux d'accès
 
-Les quotas sont déterminés automatiquement à partir du token d'authentification. Deux types de consommateurs sont distingués.
+Les quotas sont déterminés par le **niveau d'accès** associé à votre token. Quatre niveaux sont disponibles selon le profil d'usage.
 
 ---
 
-## Types de consommateurs
+## Niveaux d'accès
 
-| Type | Description | Token |
+| Niveau | Profil | Obtention |
 |---|---|---|
-| **Utilisateur** | Personne physique accédant à l'API directement (tests, scripts, outils internes) | Via MyMirAI *(pas encore disponible)* |
-| **Application** | Compte de service intégré dans une application ou un pipeline (production) | Via la SDID |
+| **Découverte** | Utilisateur individuel — tests, scripts, outils personnels | Via MyMirAI *(pas encore disponible)* |
+| **Intégration** | Application en phase de développement ou pilote | Via la SDID |
+| **Production** | Application métier standard déployée en production | Via la SDID |
+| **Critique** | Service haute disponibilité ou forte volumétrie | Via la SDID — défini sur demande |
+
+Les limites du niveau **Critique** sont définies au cas par cas par la SDID selon les besoins réels de l'application.
 
 ---
 
@@ -17,11 +21,11 @@ Les quotas sont déterminés automatiquement à partir du token d'authentificati
 
 ### LLM — `POST /v1/chat/completions`
 
-| | Utilisateur | Application |
-|---|---|---|
-| Requêtes / minute | 10 | 100 |
-| Tokens / minute | ND | ND |
-| Tokens / jour | ND | ND |
+| | Découverte | Intégration | Production | Critique |
+|---|---|---|---|---|
+| Requêtes / minute | 10 | 30 | 100 | Défini par la SDID |
+| Tokens / minute | ND | ND | ND | ND |
+| Tokens / jour | ND | ND | ND | ND |
 
 > À titre de référence : `chat-smart` (120B) délivre ~135 tok/s soit ~8 100 tok/min par session.
 
@@ -31,11 +35,11 @@ Les quotas sont déterminés automatiquement à partir du token d'authentificati
 
 Les traitements audio étant longs (jusqu'à ~7 min pour 1 h d'audio), le quota est exprimé en **jobs simultanés** plutôt qu'en requêtes par minute.
 
-| | Utilisateur | Application |
-|---|---|---|
-| Jobs simultanés | 2 | 10 |
-| Taille max par fichier | 1G | 1G |
-| Jobs / jour | ND | ND |
+| | Découverte | Intégration | Production | Critique |
+|---|---|---|---|---|
+| Jobs simultanés | 2 | 4 | 10 | Défini par la SDID |
+| Taille max par fichier | 1 Go | 1 Go | 1 Go | 1 Go |
+| Jobs / jour | ND | ND | ND | ND |
 
 > Le débit global est partagé entre tous les consommateurs. En cas de file d'attente, la position est indiquée dans la réponse polling (`queue_position`).
 
@@ -43,10 +47,10 @@ Les traitements audio étant longs (jusqu'à ~7 min pour 1 h d'audio), le quota 
 
 ### Embeddings <Badge type="warning" text="Beta" />
 
-| | Utilisateur | Application |
-|---|---|---|
-| Requêtes / minute | 100 | 2 000 |
-| Requêtes / jour | ND | ND |
+| | Découverte | Intégration | Production | Critique |
+|---|---|---|---|---|
+| Requêtes / minute | 100 | 500 | 2 000 | Défini par la SDID |
+| Requêtes / jour | ND | ND | ND | ND |
 
 > La capacité système est de 410 req/s (~24 600 req/min).
 
@@ -54,10 +58,10 @@ Les traitements audio étant longs (jusqu'à ~7 min pour 1 h d'audio), le quota 
 
 ### Reranking <Badge type="warning" text="Beta" />
 
-| | Utilisateur | Application |
-|---|---|---|
-| Requêtes / minute | 200 | 4 000 |
-| Requêtes / jour | ND | ND |
+| | Découverte | Intégration | Production | Critique |
+|---|---|---|---|---|
+| Requêtes / minute | 200 | 1 000 | 4 000 | Défini par la SDID |
+| Requêtes / jour | ND | ND | ND | ND |
 
 > La capacité système est de 764 req/s (~45 800 req/min).
 
@@ -76,6 +80,6 @@ Retry-After: 42
 
 ---
 
-## Demander un quota supérieur
+## Demander un accès ou changer de niveau
 
-Pour une Application nécessitant des quotas spécifiques non couverts par les limites par défaut, contacter l'équipe via le [canal de support](/support/).
+Pour obtenir un token, monter en niveau ou définir des quotas spécifiques, contacter la SDID via le [canal de support](/support/) en précisant le niveau souhaité, les services utilisés et le contexte applicatif.

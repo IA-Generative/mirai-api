@@ -32,6 +32,19 @@ Les performances sont issues de benchmarks réels, pas de promesses marketing. L
 
 ---
 
+## Gateway
+
+Toutes les requêtes transitent par une gateway centralisée accessible à l'adresse `https://gateway.api.ai.numerique-interieur.com`. Elle est responsable de :
+
+- **Routage** — chaque requête est dirigée vers le bon service selon le modèle et le type d'opération
+- **Rate limiting** — application des quotas par consommateur en fenêtre fixe
+- **Détection PII** — les données personnelles identifiables (adresses e-mail, IBAN, SIREN) sont détectées avant transmission au modèle
+- **Cache** — les requêtes identiques sont mises en cache (TTL configurable) pour réduire la latence et la consommation
+- **Traitement asynchrone** — les jobs longs (audio, batches) passent par une file avec scaling automatique
+- **Observabilité** — métriques et traces exposées par consommateur
+
+---
+
 ## Services disponibles
 
 | Service | Statut | Modèle | Endpoint |
@@ -47,7 +60,11 @@ Les performances sont issues de benchmarks réels, pas de promesses marketing. L
 
 ## Accès
 
-| Type | Obtention |
-|---|---|
-| **Utilisateur individuel** | Via **MyMirAI** — *pas encore disponible* |
-| **Application / compte de service** | Via la SDID — voir [Authentification](/documentation/authentification) |
+| Niveau | Profil | Obtention |
+|---|---|---|
+| **Découverte** | Utilisateur individuel | Via **MyMirAI** — *pas encore disponible* |
+| **Intégration** | Application en développement / pilote | Via la SDID |
+| **Production** | Application métier en production | Via la SDID |
+| **Critique** | Service haute disponibilité | Via la SDID — sur demande |
+
+Voir [Quotas et niveaux d'accès](/documentation/quotas) pour le détail des limites par niveau.
