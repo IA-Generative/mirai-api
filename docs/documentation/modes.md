@@ -2,10 +2,10 @@
 
 MirAI API's propose deux modes d'appel selon la durée du traitement et les contraintes de votre application.
 
-| Mode | Endpoint | Réponse | Adapté à |
-|---|---|---|---|
-| [Synchrone](#mode-synchrone) | `POST /v1/*` | Inline, connexion maintenue | LLM, embeddings, reranking, audio court |
-| [Asynchrone](#mode-asynchrone) | `POST /jobs/audio` | `job_id` → polling ou webhook | Audio long, batch |
+| Mode                           | Endpoint           | Réponse                       | Adapté à                                |
+| ------------------------------ | ------------------ | ----------------------------- | --------------------------------------- |
+| [Synchrone](#mode-synchrone)   | `POST /v1/*`       | Inline, connexion maintenue   | LLM, embeddings, reranking, audio court |
+| [Asynchrone](#mode-asynchrone) | `POST /jobs/audio` | `job_id` → polling ou webhook | Audio long, batch                       |
 
 ---
 
@@ -19,7 +19,7 @@ La connexion reste ouverte jusqu'à la fin du traitement. La requête est forwar
 curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/chat/completions \
   -H "Authorization: Bearer <TOKEN>" \
   -H "Content-Type: application/json" \
-  -d '{"model": "chat-smart", "messages": [{"role": "user", "content": "Bonjour"}]}'
+  -d '{"model": "chat-pro", "messages": [{"role": "user", "content": "Bonjour"}]}'
 ```
 
 ---

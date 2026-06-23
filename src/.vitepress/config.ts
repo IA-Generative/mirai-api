@@ -128,7 +128,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/dnum-mi/transversal-doc' },
+      { icon: 'github', link: 'https://github.com/dnum-mi/mirai-api' },
     ],
   },
 })

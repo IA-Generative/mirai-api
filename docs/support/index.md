@@ -106,7 +106,7 @@ Si le job reste bloqué > 15 min, contacter le support avec le `job_id`.
 
 **Cause :** Ce modèle passe par l'API externe Albert/Etalab dont la latence est variable (25–75 tok/s observés selon la charge de l'API nationale).
 
-**Solution :** Utiliser `mistral-small-24b` pour des performances stables et prévisibles, ou `chat-smart` pour un débit maximal.
+**Solution :** Utiliser `chat-pro` pour un débit maximal.
 
 ---
 

@@ -38,10 +38,10 @@ lint-all: ## Run full lint pipeline
 	$(BUN) run lint
 
 docker-build: ## Build production Docker image (multi-stage: prod)
-	$(DOCKER) build --tag transversal-doc --target prod .
+	$(DOCKER) build --tag mirai-api --target prod .
 
 docker-run: ## Run production Docker image (port 8080)
-	$(DOCKER) run --publish 8080:8080 --rm transversal-doc
+	$(DOCKER) run --publish 8080:8080 --rm mirai-api
 
 setup-dev: install ## Bring up dev stack with docker compose
 	$(DC) up -d
@@ -53,7 +53,7 @@ clean: ## Stop compose and remove node modules and build artifacts
 	-$(DC) down || true
 	rm -rf node_modules
 	rm -rf dist
-	-$(DOCKER) image rm transversal-doc || true
+	-$(DOCKER) image rm mirai-api || true
 
 tsc: install ## Typecheck project (no emit)
 	$(TSC) -p tsconfig.json --noEmit
