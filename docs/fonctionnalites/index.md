@@ -20,6 +20,6 @@ Vue d'ensemble des services disponibles sur MirAI API's, avec leurs performances
 
 ## Modes d'appel
 
-Tous les services supportent le mode synchrone. Les services audio supportent également le mode **asynchrone** (Kafka) pour les traitements longs.
+Tous les services supportent le mode synchrone. Les services audio supportent également le mode **asynchrone** pour les traitements longs.
 
 → [Modes synchrone et asynchrone](/documentation/modes)

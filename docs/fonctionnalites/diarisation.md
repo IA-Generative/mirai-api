@@ -8,8 +8,8 @@ Identifie et segmente les tours de parole dans un fichier audio : qui parle, et 
 
 | Méthode | Endpoint | Mode | Description |
 |---|---|---|---|
-| `POST` | `/v1/audio/diarizations` | Sync-over-Kafka | Diarisation, résultat inline |
-| `POST` | `/v1/diarize` | Sync-over-Kafka | Alias synchrone |
+| `POST` | `/v1/audio/diarizations` | Sync | Diarisation, résultat inline |
+| `POST` | `/v1/diarize` | Sync | Alias synchrone |
 | `POST` | `/jobs/audio` | Async | Diarisation asynchrone (recommandé) |
 
 ---

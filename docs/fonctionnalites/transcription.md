@@ -8,8 +8,8 @@ Convertit des fichiers audio en texte (transcription) ou traduit leur contenu en
 
 | Méthode | Endpoint | Mode | Description |
 |---|---|---|---|
-| `POST` | `/v1/audio/transcriptions` | Sync-over-Kafka | Transcription, résultat inline |
-| `POST` | `/v1/audio/translations` | Sync-over-Kafka | Traduction vers l'anglais, résultat inline |
+| `POST` | `/v1/audio/transcriptions` | Sync | Transcription, résultat inline |
+| `POST` | `/v1/audio/translations` | Sync | Traduction vers l'anglais, résultat inline |
 | `POST` | `/jobs/audio` | Async | Transcription/traduction asynchrone |
 
 ---
