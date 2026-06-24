@@ -24,8 +24,8 @@ Les limites du niveau **Critique** sont définies au cas par cas par la SDID sel
 |                   | Découverte | Intégration | Production | Critique           |
 | ----------------- | ---------- | ----------- | ---------- | ------------------ |
 | Requêtes / minute | 10         | 30          | 100        | Défini par la SDID |
-| Tokens / minute   | ND         | ND          | ND         | ND                 |
-| Tokens / jour     | ND         | ND          | ND         | ND                 |
+| Tokens / minute   | 20 000     | 40 000      | 250 000    | Défini par la SDID |
+| Tokens / jour     | 500 000    | 1 500 000   | 30 000 000 | Défini par la SDID |
 
 > À titre de référence : `chat-pro` (120B) délivre ~135 tok/s soit ~8 100 tok/min par session.
 
@@ -39,7 +39,7 @@ Les traitements audio étant longs (jusqu'à ~7 min pour 1 h d'audio), le quota 
 | ---------------------- | ---------- | ----------- | ---------- | ------------------ |
 | Jobs simultanés        | 2          | 4           | 10         | Défini par la SDID |
 | Taille max par fichier | 1 Go       | 1 Go        | 1 Go       | 1 Go               |
-| Jobs / jour            | ND         | ND          | ND         | ND                 |
+| Jobs / jour            | 20         | 100         | 500        | Défini par la SDID |
 
 > Le débit global est partagé entre tous les consommateurs. En cas de file d'attente, la position est indiquée dans la réponse polling (`queue_position`).
 
@@ -50,7 +50,7 @@ Les traitements audio étant longs (jusqu'à ~7 min pour 1 h d'audio), le quota 
 |                   | Découverte | Intégration | Production | Critique           |
 | ----------------- | ---------- | ----------- | ---------- | ------------------ |
 | Requêtes / minute | 100        | 500         | 2 000      | Défini par la SDID |
-| Requêtes / jour   | ND         | ND          | ND         | ND                 |
+| Requêtes / jour   | 50 000     | 500 000     | 5 000 000  | Défini par la SDID |
 
 > La capacité système est de 410 req/s (~24 600 req/min).
 
@@ -61,7 +61,7 @@ Les traitements audio étant longs (jusqu'à ~7 min pour 1 h d'audio), le quota 
 |                   | Découverte | Intégration | Production | Critique           |
 | ----------------- | ---------- | ----------- | ---------- | ------------------ |
 | Requêtes / minute | 200        | 1 000       | 4 000      | Défini par la SDID |
-| Requêtes / jour   | ND         | ND          | ND         | ND                 |
+| Requêtes / jour   | 100 000    | 1 000 000   | 10 000 000 | Défini par la SDID |
 
 > La capacité système est de 764 req/s (~45 800 req/min).
 
