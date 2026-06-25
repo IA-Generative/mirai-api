@@ -6,12 +6,7 @@ L'accès à MirAI API's est sécurisé via [Zitadel](https://zitadel.com/docs). 
 
 ## Token
 
-| Niveau          | Usage                                                      | Obtention                                 | Quotas                               |
-| --------------- | ---------------------------------------------------------- | ----------------------------------------- | ------------------------------------ |
-| **Découverte**  | Utilisateur individuel — tests, scripts, outils personnels | Via **MyMirAI** *(pas encore disponible)* | Voir [Quotas](/documentation/quotas) |
-| **Intégration** | Application en développement ou phase pilote               | Via la **SDID**                           | Voir [Quotas](/documentation/quotas) |
-| **Production**  | Application métier standard déployée en production         | Via la **SDID**                           | Voir [Quotas](/documentation/quotas) |
-| **Critique**    | Service haute disponibilité ou forte volumétrie            | Via la **SDID** — sur demande             | Voir [Quotas](/documentation/quotas) |
+Chaque token est associé à un **niveau d'accès** (Découverte, Intégration, Production, Critique) qui détermine les quotas applicables. Voir [Quotas et niveaux d'accès](/documentation/quotas) pour le détail des limites par niveau et les modalités d'obtention.
 
 **Durée de validité : 1 an.** À l'approche de l'expiration, renouveler le token avant interruption de service via le même canal d'obtention.
 
