@@ -27,6 +27,8 @@ export default defineConfig({
           { text: 'Exemples', link: '/documentation/exemples' },
           { text: 'Modes', link: '/documentation/modes' },
           { text: 'Quotas', link: '/documentation/quotas' },
+          { text: 'Référence des erreurs', link: '/documentation/errors' },
+          { text: 'FAQ', link: '/documentation/faq' },
         ],
       },
       {
@@ -42,6 +44,7 @@ export default defineConfig({
         ],
       },
       { text: 'Support', link: '/support/' },
+      { text: 'Changelog', link: '/changelog' },
     ],
     outline: { level: [2, 3], label: 'Sur cette page' },
     search: {

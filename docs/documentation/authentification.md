@@ -22,9 +22,9 @@ Les tokens individuels sont délivrés via l'application **MyMirAI** — **pas e
 
 L'accès applicatif n'est pas en libre-service :
 
-1. Contacter la **SDID** via le [canal de support](/support/)
+1. Contacter l'**équipe MirAI** via le [canal de support](/support/)
 2. Préciser le niveau souhaité, les services utilisés et le contexte applicatif
-3. La SDID crée le compte Zitadel et transmet le token
+3. L'équipe MirAI crée le compte Zitadel et transmet le token
 
 ---
 

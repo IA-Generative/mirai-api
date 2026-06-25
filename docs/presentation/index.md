@@ -63,8 +63,8 @@ Toutes les requêtes transitent par une gateway centralisée accessible à l'adr
 | Niveau          | Profil                                | Obtention                                 |
 | --------------- | ------------------------------------- | ----------------------------------------- |
 | **Découverte**  | Utilisateur individuel                | Via **MyMirAI** — *pas encore disponible* |
-| **Intégration** | Application en développement / pilote | Via la SDID                               |
-| **Production**  | Application métier en production      | Via la SDID                               |
-| **Critique**    | Service haute disponibilité           | Via la SDID — sur demande                 |
+| **Intégration** | Application en développement / pilote | Via l'équipe MirAI                               |
+| **Production**  | Application métier en production      | Via l'équipe MirAI                               |
+| **Critique**    | Service haute disponibilité           | Via l'équipe MirAI — sur demande                 |
 
 Voir [Quotas et niveaux d'accès](/documentation/quotas) pour le détail des limites par niveau.
