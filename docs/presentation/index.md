@@ -52,7 +52,7 @@ Toutes les requêtes transitent par une gateway centralisée accessible à l'adr
 | Transcription audio | **Beta**   | faster-whisper-large-v3-turbo | `POST /v1/audio/transcriptions` |
 | Traduction audio    | **Beta**   | faster-whisper-large-v3-turbo | `POST /v1/audio/translations`   |
 | Diarisation audio   | **Beta**   | pyannote-diarization          | `POST /v1/audio/diarizations`   |
-| Chat LLM            | **Stable** | 8 modèles disponibles         | `POST /v1/chat/completions`     |
+| Chat LLM            | **Stable** | 7 modèles disponibles         | `POST /v1/chat/completions`     |
 | Embeddings          | **Beta**   | bge-m3                        | `POST /v1/embeddings`           |
 | Reranking           | **Beta**   | bge-reranker-v2-m3            | `POST /v1/rerank`               |
 

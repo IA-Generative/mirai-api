@@ -14,10 +14,11 @@ Historique des évolutions de MirAI API's — modèles, quotas, endpoints et com
 
 ### Modèles
 - Ajout de `chat-pro` (remplace `chat-smart`)
-- Ajout de `tools-pro`
-- Retrait de `mistral-small-24b`
-- Ajout de `mistral-medium-albert` (API nationale Albert/Etalab)
-- Ajout de `code-completion` (Qwen3-Coder-30B)
+- `chat-small` renommé en `chat`
+- `tools` (120B) renommé en `tools-pro` ; `tools` désigne désormais le modèle rapide 26B
+- `code` et `code-completion` migrent vers **Qwen3.6-35B-A3B**
+- Retrait de `mistral-small-24b` et `guardrail`
+- Ajout de `mistral-medium-albert` (API Albert/Etalab)
 
 ### Documentation
 - Suppression du mode Sync-over-Kafka

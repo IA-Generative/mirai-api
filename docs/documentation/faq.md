@@ -32,10 +32,11 @@ Aucune autre modification n'est nécessaire pour les endpoints LLM, audio et emb
 | Besoin | Modèle recommandé |
 | ------ | ----------------- |
 | Synthèse, analyse, raisonnement complexe | `chat-pro` |
-| Function calling, agents | `tools` ou `tools-pro` |
+| Function calling, agents (haute qualité) | `tools-pro` |
+| Function calling, agents (faible latence) | `tools` |
+| Interaction rapide, faible latence | `chat` |
 | Génération ou revue de code | `code` ou `code-completion` |
-| Réponse rapide, faible latence | `chat-small` |
-| Contrainte de souveraineté (modèle national) | `mistral-medium-albert` |
+| Accès au modèle Albert/Etalab | `mistral-medium-albert` |
 
 ### Le streaming est-il supporté ?
 

@@ -1,6 +1,6 @@
 # LLM — Génération de texte
 
-Accès à 8 modèles de génération de texte via une interface 100% compatible OpenAI. Du modèle léger et rapide au modèle 120B paramètres pour les tâches complexes.
+Accès à 7 modèles de génération de texte via une interface 100% compatible OpenAI. Du modèle léger et rapide au modèle 120B paramètres pour les tâches complexes.
 
 **Endpoint :** `POST /v1/chat/completions`
 
@@ -11,12 +11,12 @@ Accès à 8 modèles de génération de texte via une interface 100% compatible 
 | Alias                   | Modèle                              | Paramètres | tok/s | Latence moy | Usage recommandé                     |
 | ----------------------- | ----------------------------------- | ---------- | ----- | ----------- | ------------------------------------ |
 | `chat-pro`              | gpt-oss-120b                        | 120B       | 117.6 | 1.38 s      | Réponses riches, synthèse, analyse   |
-| `tools`                 | gpt-oss-120b                        | 120B       | 124.4 | 1.03 s      | Function calling, agents             |
-| `code`                  | gpt-oss-120b                        | 120B       | 130.4 | 1.15 s      | Génération et revue de code          |
-| `chat-small`            | gemma-4-26B-A4B-it                  | 26B        | 104.0 | 1.05 s      | Interactions rapides, faible latence |
-| `tools-fast`            | gemma-4-26B-A4B-it                  | 26B        | 107.8 | 0.95 s      | Agents à faible latence              |
-| `code-completion`       | Qwen3-Coder-30B-A3B                 | 30B        | 105.7 | 1.04 s      | Complétion de code, copilot          |
-| `mistral-medium-albert` | mistral-medium-2508 (Albert/Etalab) | —          | —     | —           | Modèle souverain via API nationale   |
+| `tools-pro`             | gpt-oss-120b                        | 120B       | 124.4 | 1.03 s      | Function calling, agents (120B)      |
+| `chat`                  | gemma-4-26B-A4B-it                  | 26B        | 104.0 | 1.05 s      | Interactions rapides, faible latence |
+| `tools`                 | gemma-4-26B-A4B-it                  | 26B        | 107.8 | 0.95 s      | Function calling, agents (rapide)    |
+| `code`                  | Qwen3.6-35B-A3B                     | 35B        | —     | —           | Génération et revue de code          |
+| `code-completion`       | Qwen3.6-35B-A3B                     | 35B        | —     | —           | Complétion de code, copilot          |
+| `mistral-medium-albert` | mistral-medium-2508 (Albert/Etalab) | —          | —     | —           | Accès au modèle Albert/Etalab        |
 
 > Benchmarks réalisés en mai 2026 avec des prompts de 81–95 tokens.
 
@@ -64,12 +64,14 @@ for chunk in stream:
 
 ```
 Tâche complexe, synthèse longue, raisonnement    →  chat-pro
-Function calling / agents                        →  tools ou tools-fast
+Function calling / agents (haute qualité)        →  tools-pro
+Function calling / agents (faible latence)       →  tools
+Interaction rapide, faible latence               →  chat
 Génération ou revue de code                      →  code ou code-completion
-Interaction temps réel, faible latence           →  chat-small ou tools-fast
+Accès au modèle Albert/Etalab spécifiquement     →  mistral-medium-albert
 ```
 
-> `mistral-medium-albert` passe par l'API externe Albert/Etalab — sa latence est variable selon la charge de l'API.
+> `mistral-medium-albert` passe par l'API Albert/Etalab — sa latence dépend de la disponibilité de cette API externe et peut être variable.
 >
 
 ---
