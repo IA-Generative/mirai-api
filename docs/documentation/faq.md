@@ -58,10 +58,6 @@ Les formats courants sont supportés : `mp3`, `wav`, `ogg`, `flac`, `m4a`, `webm
 
 Oui, faster-whisper détecte automatiquement la langue de l'audio et transcrit dans cette langue. Pour forcer une langue, utiliser le paramètre `language`.
 
-### La traduction peut-elle produire un résultat dans une autre langue que l'anglais ?
-
-Non. L'endpoint `/v1/audio/translations` produit uniquement du texte en **anglais** — c'est une contrainte du modèle Whisper. Pour traduire vers une autre langue, combiner la transcription avec un appel LLM.
-
 ### Quel mode choisir pour l'audio — synchrone ou asynchrone ?
 
 - **Synchrone** (`/v1/audio/transcriptions`) : adapté aux fichiers courts (< 5 min), la connexion reste ouverte pendant le traitement

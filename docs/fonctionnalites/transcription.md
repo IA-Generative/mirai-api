@@ -1,6 +1,6 @@
-# Transcription & Traduction audio <Badge type="warning" text="Beta" />
+# Transcription audio <Badge type="warning" text="Beta" />
 
-Convertit des fichiers audio en texte (transcription) ou traduit leur contenu en anglais (traduction), via le modèle `faster-whisper-large-v3-turbo`.
+Convertit des fichiers audio en texte via le modèle `faster-whisper-large-v3-turbo`.
 
 ---
 
@@ -9,8 +9,7 @@ Convertit des fichiers audio en texte (transcription) ou traduit leur contenu en
 | Méthode | Endpoint | Mode | Description |
 |---|---|---|---|
 | `POST` | `/v1/audio/transcriptions` | Sync | Transcription, résultat inline |
-| `POST` | `/v1/audio/translations` | Sync | Traduction vers l'anglais, résultat inline |
-| `POST` | `/jobs/audio` | Async | Transcription/traduction asynchrone |
+| `POST` | `/jobs/audio` | Async | Transcription asynchrone |
 
 ---
 
@@ -123,15 +122,6 @@ with open("interview.wav", "rb") as f:
 print(result.text)
 for word in result.words:
     print(f"{word.start:.2f}s  {word.word}")
-```
-
-### Traduction vers l'anglais
-
-```bash
-curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/translations \
-  -H "Authorization: Bearer <TOKEN>" \
-  -F "file=@discours_fr.mp3"
-# → {"text": "Good morning, welcome..."}
 ```
 
 ### Async (batch / fichiers volumineux)
