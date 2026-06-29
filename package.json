@@ -14,8 +14,8 @@
     "lint": "eslint . --ext .ts,.js,.vue,.md,.yml,.yaml --max-warnings=0",
     "lint:fix": "eslint . --ext .ts,.js,.vue,.md,.yml,.yaml --fix",
     "lint:all": "bun run lint",
-    "docker:build": "docker build --tag transversal-doc --target prod .",
-    "docker:run": "docker run --publish 8080:8080 --rm transversal-doc"
+    "docker:build": "docker build --tag mirai-api --target prod .",
+    "docker:run": "docker run --publish 8080:8080 --rm mirai-api"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^9.0.0",

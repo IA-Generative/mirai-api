@@ -18,30 +18,52 @@ export default defineConfig({
       { text: 'Support', link: '/support/' },
     ],
     sidebar: [
-      { text: 'Présentation', link: '/presentation/' },
+      {
+        text: 'Présentation',
+        link: '/presentation/',
+        items: [
+          { text: 'Fonctionnalités', link: '/fonctionnalites/' },
+        ],
+      },
       {
         text: 'Documentation',
         link: '/documentation/',
         items: [
+          {
+            text: 'Audio',
+            items: [
+              { text: 'Diarisation', link: '/fonctionnalites/diarisation' },
+              { text: 'Transcription', link: '/fonctionnalites/transcription' },
+            ],
+          },
+          {
+            text: 'Evaluation',
+            items: [
+              { text: 'Reranking', link: '/fonctionnalites/reranking' },
+            ],
+          },
+          {
+            text: 'Chat',
+            items: [
+              { text: 'LLM', link: '/fonctionnalites/llm' },
+            ],
+          },
+          {
+            text: 'Spécialisé',
+            items: [
+              { text: 'Embeddings', link: '/fonctionnalites/embeddings' },
+            ],
+          },
           { text: 'Authentification', link: '/documentation/authentification' },
           { text: 'Exemples', link: '/documentation/exemples' },
           { text: 'Modes', link: '/documentation/modes' },
           { text: 'Quotas', link: '/documentation/quotas' },
-        ],
-      },
-      {
-        text: 'Fonctionnalités',
-        link: '/fonctionnalites/',
-        items: [
-          { text: 'Aperçu', link: '/fonctionnalites/' },
-          { text: 'Diarisation', link: '/fonctionnalites/diarisation' },
-          { text: 'Embeddings', link: '/fonctionnalites/embeddings' },
-          { text: 'LLM', link: '/fonctionnalites/llm' },
-          { text: 'Reranking', link: '/fonctionnalites/reranking' },
-          { text: 'Transcription', link: '/fonctionnalites/transcription' },
+          { text: 'Référence des erreurs', link: '/documentation/errors' },
+          { text: 'FAQ', link: '/documentation/faq' },
         ],
       },
       { text: 'Support', link: '/support/' },
+      { text: 'Changelog', link: '/changelog' },
     ],
     outline: { level: [2, 3], label: 'Sur cette page' },
     search: {

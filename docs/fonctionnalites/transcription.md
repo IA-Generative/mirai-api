@@ -1,6 +1,6 @@
-# Transcription & Traduction audio <Badge type="warning" text="Beta" />
+# Transcription audio <Badge type="warning" text="Beta" />
 
-Convertit des fichiers audio en texte (transcription) ou traduit leur contenu en anglais (traduction), via le modèle `faster-whisper-large-v3-turbo`.
+Convertit des fichiers audio en texte via le modèle `faster-whisper-large-v3-turbo`.
 
 ---
 
@@ -8,9 +8,8 @@ Convertit des fichiers audio en texte (transcription) ou traduit leur contenu en
 
 | Méthode | Endpoint | Mode | Description |
 |---|---|---|---|
-| `POST` | `/v1/audio/transcriptions` | Sync-over-Kafka | Transcription, résultat inline |
-| `POST` | `/v1/audio/translations` | Sync-over-Kafka | Traduction vers l'anglais, résultat inline |
-| `POST` | `/jobs/audio` | Async | Transcription/traduction asynchrone |
+| `POST` | `/v1/audio/transcriptions` | Sync | Transcription, résultat inline |
+| `POST` | `/jobs/audio` | Async | Transcription asynchrone |
 
 ---
 
@@ -43,6 +42,7 @@ Convertit des fichiers audio en texte (transcription) ou traduit leur contenu en
 | `vad_filter` | `false` | Active le filtre Voice Activity Detection (silence ignoré) |
 | `hotwords` | — | Mots à favoriser lors du décodage (virgule-séparés) |
 | `prompt` | — | Contexte textuel pour guider le style ou les termes spécifiques |
+| `diarization` | `false` | Permet d'activer la diarisation sur un même appel |
 
 ---
 
@@ -79,6 +79,16 @@ curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/transcripti
   -H "Authorization: Bearer <TOKEN>" \
   -F "file=@interview.wav"
 # → {"text": "Bonjour, bienvenue..."}
+```
+
+### Avec diarisation
+
+```bash
+curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/transcriptions \
+  -H "Authorization: Bearer <TOKEN>" \
+  -F "file=@conference.mp4" \
+  -F "diarization=true" \
+  -F "response_format=verbose_json"
 ```
 
 ### Avec langue forcée et timestamps par mot
@@ -123,15 +133,6 @@ with open("interview.wav", "rb") as f:
 print(result.text)
 for word in result.words:
     print(f"{word.start:.2f}s  {word.word}")
-```
-
-### Traduction vers l'anglais
-
-```bash
-curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/translations \
-  -H "Authorization: Bearer <TOKEN>" \
-  -F "file=@discours_fr.mp3"
-# → {"text": "Good morning, welcome..."}
 ```
 
 ### Async (batch / fichiers volumineux)

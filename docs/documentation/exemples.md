@@ -17,7 +17,7 @@ client = OpenAI(
 )
 
 response = client.chat.completions.create(
-    model="chat-smart",
+    model="chat-pro",
     messages=[
         {"role": "system", "content": "Tu es un assistant expert en droit administratif français."},
         {"role": "user", "content": "Quelles sont les obligations de neutralité d'un fonctionnaire ?"}
@@ -194,7 +194,7 @@ context = "\n\n".join(r["text"] for r in reranked)
 
 # 4. Génération
 response = client.chat.completions.create(
-    model="chat-smart",
+    model="chat-pro",
     messages=[
         {"role": "system", "content": f"Réponds uniquement à partir du contexte suivant :\n\n{context}"},
         {"role": "user", "content": question},

@@ -17,7 +17,7 @@ Cette section rassemble les guides d'utilisation, exemples d'intégration et ré
 
 ## Démarrage rapide
 
-1. Obtenez un token via la SDID (voir la page [Authentification](/documentation/authentification)).
+1. Obtenez un token via l'équipe MirAI (voir la page [Authentification](/documentation/authentification)).
 2. Lancez un exemple depuis [Exemples d'intégration](/documentation/exemples).
 3. Adaptez le mode d'appel (synchrone / asynchrone) selon la durée et la taille des traitements (voir [Modes d'appel](/documentation/modes)).
 
@@ -26,7 +26,3 @@ Cette section rassemble les guides d'utilisation, exemples d'intégration et ré
 ## Contribuer
 
 Les corrections et améliorations sont bienvenues : proposez une PR sur GitHub ou utilisez le lien d'édition présent sur chaque page.
-
----
-
-Si vous souhaitez que je rédige une version courte en anglais, ou que j'ajoute des exemples rapides (« quickstart ») dans cette page, dites-le et je l'ajouterai.

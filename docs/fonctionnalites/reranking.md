@@ -10,14 +10,14 @@ Réordonne une liste de passages en fonction de leur pertinence par rapport à u
 
 Benchmark de charge réalisé en mai 2026 (50 VUs simultanés, ~24 min).
 
-| Métrique | Valeur |
-|---|---|
-| Débit moyen | **764 req/s** |
-| Débit max | 833 req/s |
-| Latence p95 | **855 ms** |
-| Latence p99 | **946 ms** |
-| Total requêtes | 907 690 |
-| Taux d'erreur | **0%** |
+| Métrique       | Valeur        |
+| -------------- | ------------- |
+| Débit moyen    | **764 req/s** |
+| Débit max      | 833 req/s     |
+| Latence p95    | **855 ms**    |
+| Latence p99    | **946 ms**    |
+| Total requêtes | 907 690       |
+| Taux d'erreur  | **0%**        |
 
 > Comportement très stable : latence p95 et p99 inférieures à 1 s sur l'ensemble du test. Pics ponctuels à ~2 s lors des montées en charge, se résorbant rapidement.
 
@@ -103,7 +103,7 @@ Recherche vectorielle (bge-m3 embeddings) → top 20 chunks
       ↓
 Reranking (bge-reranker-v2-m3) → top 5 chunks les plus pertinents
       ↓
-Injection dans le LLM (chat-smart)
+Injection dans le LLM (chat-pro)
       ↓
 Réponse finale
 ```
