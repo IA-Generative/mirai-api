@@ -24,3 +24,5 @@ Historique des évolutions de MirAI API's — modèles, quotas, endpoints et com
 - Suppression du mode Sync-over-Kafka
 - Ajout de la FAQ, de la référence des erreurs et du changelog
 - Ajout des quotas journaliers par niveau
+- Ajout diarization via transcription
+- Ajout jobs page

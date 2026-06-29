@@ -42,6 +42,7 @@ Convertit des fichiers audio en texte via le modèle `faster-whisper-large-v3-tu
 | `vad_filter` | `false` | Active le filtre Voice Activity Detection (silence ignoré) |
 | `hotwords` | — | Mots à favoriser lors du décodage (virgule-séparés) |
 | `prompt` | — | Contexte textuel pour guider le style ou les termes spécifiques |
+| `diarization` | `false` | Permet d'activer la diarisation sur un même appel |
 
 ---
 
@@ -78,6 +79,16 @@ curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/transcripti
   -H "Authorization: Bearer <TOKEN>" \
   -F "file=@interview.wav"
 # → {"text": "Bonjour, bienvenue..."}
+```
+
+### Avec diarisation
+
+```bash
+curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/transcriptions \
+  -H "Authorization: Bearer <TOKEN>" \
+  -F "file=@conference.mp4" \
+  -F "diarization=true" \
+  -F "response_format=verbose_json"
 ```
 
 ### Avec langue forcée et timestamps par mot
