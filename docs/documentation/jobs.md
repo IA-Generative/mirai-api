@@ -1,4 +1,10 @@
-Soumettre un job — POST /jobs/{service_type}
+### Soumettre un job
+
+POST /jobs/{service_type}
+
+Le fichier est soumis, un job_id est retourné immédiatement. Le résultat est récupéré ultérieurement par polling ou via webhook.
+
+Adapté aux : traitements en batch, architectures événementielles, fichiers volumineux ou longs.
 
 curl -X POST https://gateway.api.ai.numerique-interieur.com/jobs/transcription \
   -F file=@audio.wav \
@@ -12,7 +18,38 @@ curl -X POST https://gateway.api.ai.numerique-interieur.com/jobs/transcription \
   "status": "pending"
 }
 
-Consulter un job — GET /jobs/{service_type}/{id}
+### Webhook
+
+Fournir un `callback_url` pour être notifié dès la complétion du job async, sans polling.
+
+```bash
+curl -X POST https://gateway.api.ai.numerique-interieur.com/jobs/audio \
+  -H "Authorization: Bearer <TOKEN>" \
+  -F "file=@conference.mp3" \
+  -F "callback_url=https://mon-app.example.com/hooks/ia"
+```
+
+Le gateway effectue un `POST` sur cette URL avec le résultat complet dès que le job est terminé.
+
+En cas d'échec HTTP côté récepteur : **3 tentatives** avec backoff exponentiel (2 s → 4 s → 8 s).
+
+### Consulter un job
+
+GET /jobs/{service_type}/{id}
+
+### Cycle de vie d'un job
+
+```
+POST /jobs/audio
+      ↓
+202 Accepted  { "job_id": "550e8400-..." }
+      ↓
+GET /jobs/audio/{job_id}  →  { "status": "pending", "queue_position": 3 }
+      ↓
+GET /jobs/audio/{job_id}  →  { "status": "processing" }
+      ↓
+GET /jobs/audio/{job_id}  →  { "status": "completed", "result": {...} }
+```
 
 En attente :
 {
@@ -45,7 +82,9 @@ En erreur :
   "updated_at": "2026-06-29T10:01:05Z"
 }
 
-Lister ses jobs — GET /jobs?limit=20&offset=0
+### Lister ses jobs 
+
+GET /jobs?limit=20&offset=0
 
 {
   "consumer": "my-api-key",
@@ -73,7 +112,9 @@ Lister ses jobs — GET /jobs?limit=20&offset=0
   ]
 }
 
-Annuler un job — DELETE /jobs/{service_type}/{id}
+### Annuler un job 
+
+DELETE /jobs/{service_type}/{id}
 
 Possible uniquement si le job est encore pending ou processing. Réponse 202 sans body.
 
@@ -81,7 +122,8 @@ Si le job est déjà completed ou failed :
 { "error": "job \"550e8400-...\" cannot be cancelled in state \"completed\"" }
 
 ---
-Durée de vie des jobs et GC
+
+### Durée de vie des jobs et GC
 
 Les jobs non traités ne restent pas indéfiniment dans le système. Deux mécanismes s'appliquent :
 
