@@ -1,19 +1,20 @@
 # Quotas et niveaux d'accès
 
-Les quotas sont déterminés par le **niveau d'accès** associé à votre token. Quatre niveaux sont disponibles selon le profil d'usage.
+Les quotas sont déterminés par le **niveau d'accès** associé à votre token. Cinq niveaux sont disponibles, répartis sur deux axes d'usage : **individuel** (self-service) et **application** (via l'équipe MirAI).
 
 ---
 
 ## Niveaux d'accès
 
-| Niveau          | Profil                                                     | Obtention                             |
-| --------------- | ---------------------------------------------------------- | ------------------------------------- |
-| **Découverte**  | Utilisateur individuel — tests, scripts, outils personnels | Via MyMirAI *(pas encore disponible)* |
-| **Intégration** | Application en phase de développement ou pilote            | Via l'équipe MirAI                           |
-| **Production**  | Application métier standard déployée en production         | Via l'équipe MirAI                           |
-| **Critique**    | Service haute disponibilité ou forte volumétrie            | Via l'équipe MirAI — défini sur demande      |
+| Niveau           | Axe         | Profil                                                                 | Obtention                                |
+| ---------------- | ----------- | --------------------------------------------------------------------- | ---------------------------------------- |
+| **Découverte**   | Individuel  | Tests, scripts, outils personnels — premiers pas                      | Via MyMirAI *(pas encore disponible)*    |
+| **Développeur**  | Individuel  | Prototypage, assistants de code (Claude Code, Copilot…) — usage soutenu | Via MyMirAI *(pas encore disponible)*    |
+| **Intégration**  | Application | Application en phase de développement ou pilote                        | Via l'équipe MirAI                       |
+| **Production**   | Application | Application métier standard déployée en production                     | Via l'équipe MirAI                       |
+| **Critique**     | Application | Service haute disponibilité ou forte volumétrie                       | Via l'équipe MirAI — défini sur demande  |
 
-Les limites du niveau **Critique** sont définies au cas par cas par l'équipe MirAI selon les besoins réels de l'application.
+Les niveaux **Découverte** et **Développeur** sont individuels et destinés à être auto-souscrits via MyMirAI. Les niveaux **Intégration**, **Production** et **Critique** sont dédiés au service d'applications et provisionnés par l'équipe MirAI. Les limites du niveau **Critique** sont définies au cas par cas selon les besoins réels de l'application.
 
 ---
 
@@ -21,25 +22,27 @@ Les limites du niveau **Critique** sont définies au cas par cas par l'équipe M
 
 ### LLM — `POST /v1/chat/completions`
 
-|                   | Découverte | Intégration | Production | Critique           |
-| ----------------- | ---------- | ----------- | ---------- | ------------------ |
-| Requêtes / minute | 10         | 30          | 100        | Défini par l'équipe MirAI |
-| Tokens / minute   | 20 000     | 40 000      | 250 000    | Défini par l'équipe MirAI |
-| Tokens / jour     | 500 000    | 1 500 000   | 30 000 000 | Défini par l'équipe MirAI |
+|                   | Découverte | Développeur | Intégration | Production  | Critique           |
+| ----------------- | ---------- | ----------- | ----------- | ----------- | ------------------ |
+| Requêtes / minute | 10         | 30          | 60          | 200         | Défini par l'équipe MirAI |
+| Tokens / minute   | 30 000     | 150 000     | 200 000     | 500 000     | Défini par l'équipe MirAI |
+| Tokens / jour     | 500 000    | 5 000 000   | 10 000 000  | 100 000 000 | Défini par l'équipe MirAI |
 
-> À titre de référence : `chat-pro` (120B) délivre ~135 tok/s soit ~8 100 tok/min par session.
+> Le niveau **Développeur** offre une fenêtre tokens/minute élevée (150 000) pour absorber les rafales des assistants de code, qui envoient de gros contextes à chaque requête.
+>
+> À titre de référence : `chat-pro` (120B) délivre ~135 tok/s soit ~8 100 tok/min par session. Le plafond tokens/jour s'applique **par modèle**.
 
 ---
 
 ### Audio — Transcription & Diarisation <Badge type="warning" text="Beta" />
 
-Les traitements audio étant longs (jusqu'à ~7 min pour 1 h d'audio), le quota est exprimé en **jobs simultanés** plutôt qu'en requêtes par minute.
+Les traitements audio étant longs (jusqu'à ~7 min pour 1 h d'audio), le quota est exprimé en **jobs simultanés** et **jobs par jour** plutôt qu'en requêtes par minute.
 
-|                        | Découverte | Intégration | Production | Critique           |
-| ---------------------- | ---------- | ----------- | ---------- | ------------------ |
-| Jobs simultanés        | 2          | 4           | 10         | Défini par l'équipe MirAI |
-| Taille max par fichier | 1 Go       | 1 Go        | 1 Go       | 1 Go               |
-| Jobs / jour            | 20         | 100         | 500        | Défini par l'équipe MirAI |
+|                        | Découverte | Développeur | Intégration | Production | Critique           |
+| ---------------------- | ---------- | ----------- | ----------- | ---------- | ------------------ |
+| Jobs simultanés        | 2          | 3           | 4           | 10         | Défini par l'équipe MirAI |
+| Jobs / jour            | 20         | 50          | 100         | 500        | Défini par l'équipe MirAI |
+| Taille max par fichier | 1 Go       | 1 Go        | 1 Go        | 1 Go       | 1 Go               |
 
 > Le débit global est partagé entre tous les consommateurs. En cas de file d'attente, la position est indiquée dans la réponse polling (`queue_position`).
 
@@ -47,10 +50,10 @@ Les traitements audio étant longs (jusqu'à ~7 min pour 1 h d'audio), le quota 
 
 ### Embeddings <Badge type="warning" text="Beta" />
 
-|                   | Découverte | Intégration | Production | Critique           |
-| ----------------- | ---------- | ----------- | ---------- | ------------------ |
-| Requêtes / minute | 100        | 500         | 2 000      | Défini par l'équipe MirAI |
-| Requêtes / jour   | 50 000     | 500 000     | 5 000 000  | Défini par l'équipe MirAI |
+|                   | Découverte | Développeur | Intégration | Production | Critique           |
+| ----------------- | ---------- | ----------- | ----------- | ---------- | ------------------ |
+| Requêtes / minute | 100        | 300         | 500         | 2 000      | Défini par l'équipe MirAI |
+| Requêtes / jour   | 50 000     | 150 000     | 500 000     | 5 000 000  | Défini par l'équipe MirAI |
 
 > La capacité système est de 410 req/s (~24 600 req/min).
 
@@ -58,10 +61,10 @@ Les traitements audio étant longs (jusqu'à ~7 min pour 1 h d'audio), le quota 
 
 ### Reranking <Badge type="warning" text="Beta" />
 
-|                   | Découverte | Intégration | Production | Critique           |
-| ----------------- | ---------- | ----------- | ---------- | ------------------ |
-| Requêtes / minute | 200        | 1 000       | 4 000      | Défini par l'équipe MirAI |
-| Requêtes / jour   | 100 000    | 1 000 000   | 10 000 000 | Défini par l'équipe MirAI |
+|                   | Découverte | Développeur | Intégration | Production | Critique           |
+| ----------------- | ---------- | ----------- | ----------- | ---------- | ------------------ |
+| Requêtes / minute | 200        | 600         | 1 000       | 4 000      | Défini par l'équipe MirAI |
+| Requêtes / jour   | 100 000    | 300 000     | 1 000 000   | 10 000 000 | Défini par l'équipe MirAI |
 
 > La capacité système est de 764 req/s (~45 800 req/min).
 

@@ -7,7 +7,7 @@ Historique des évolutions de MirAI API's — modèles, quotas, endpoints et com
 ## Juin 2026
 
 ### Nouveautés
-- **Niveaux d'accès** — Introduction de quatre niveaux (Découverte, Intégration, Production, Critique) en remplacement de la distinction Utilisateur / Application
+- **Niveaux d'accès** — Introduction de cinq niveaux (Découverte, Développeur, Intégration, Production, Critique) en remplacement de la distinction Utilisateur / Application. Les niveaux Découverte et Développeur sont individuels (self-service via MyMirAI) ; Intégration, Production et Critique sont dédiés au service d'applications.
 - **Gateway** — Mise en production de la gateway centralisée : rate limiting par consommateur, détection PII, cache Redis, observabilité Prometheus
 - **Traitement asynchrone** — Migration de la file de jobs vers Redis avec scaling automatique KEDA
 - **Rétention** — Durée de rétention des jobs async portée à **72 heures**
