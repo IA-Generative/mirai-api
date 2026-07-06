@@ -56,6 +56,7 @@ export default defineConfig({
           },
           { text: 'Authentification', link: '/documentation/authentification' },
           { text: 'Exemples', link: '/documentation/exemples' },
+          { text: 'Jobs', link: '/documentation/jobs' },
           { text: 'Modes', link: '/documentation/modes' },
           { text: 'Quotas', link: '/documentation/quotas' },
           { text: 'Référence des erreurs', link: '/documentation/errors' },

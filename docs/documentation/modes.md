@@ -28,4 +28,4 @@ curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/chat/completions 
 
 **Adapté aux :** traitements en batch, architectures événementielles, fichiers volumineux ou longs.
 
-Détail : [Asynchrone](#jobs)
+Détail : [Asynchrone](/documentation/jobs)
