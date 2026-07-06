@@ -61,7 +61,8 @@ Toutes les requêtes transitent par une gateway centralisée accessible à l'adr
 
 | Niveau          | Profil                                | Obtention                                 |
 | --------------- | ------------------------------------- | ----------------------------------------- |
-| **Découverte**  | Utilisateur individuel                | Via **MyMirAI** — *pas encore disponible* |
+| **Découverte**  | Individuel — tests, scripts           | Via **MyMirAI** — *pas encore disponible* |
+| **Développeur** | Individuel — prototypage, assistants de code | Via **MyMirAI** — *pas encore disponible* |
 | **Intégration** | Application en développement / pilote | Via l'équipe MirAI                               |
 | **Production**  | Application métier en production      | Via l'équipe MirAI                               |
 | **Critique**    | Service haute disponibilité           | Via l'équipe MirAI — sur demande                 |
