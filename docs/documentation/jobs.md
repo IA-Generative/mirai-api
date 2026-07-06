@@ -1,11 +1,12 @@
 ### Soumettre un job
 
-POST /jobs/{service_type}
+`POST /jobs/{service_type}/`
 
 Le fichier est soumis, un job_id est retourné immédiatement. Le résultat est récupéré ultérieurement par polling ou via webhook.
 
 Adapté aux : traitements en batch, architectures événementielles, fichiers volumineux ou longs.
 
+```bash
 curl -X POST https://gateway.api.ai.numerique-interieur.com/jobs/transcription \
   -F file=@audio.wav \
   -F model=whisper-large-v3 \
@@ -17,6 +18,7 @@ curl -X POST https://gateway.api.ai.numerique-interieur.com/jobs/transcription \
   "model": "whisper-large-v3",
   "status": "pending"
 }
+```
 
 ### Webhook
 
@@ -35,11 +37,11 @@ En cas d'échec HTTP côté récepteur : **3 tentatives** avec backoff exponenti
 
 ### Consulter un job
 
-GET /jobs/{service_type}/{id}
+`GET /jobs/{service_type}/{id}`
 
 ### Cycle de vie d'un job
 
-```
+```bash
 POST /jobs/audio
       ↓
 202 Accepted  { "job_id": "550e8400-..." }
@@ -52,6 +54,7 @@ GET /jobs/audio/{job_id}  →  { "status": "completed", "result": {...} }
 ```
 
 En attente :
+```bash
 {
   "job_id": "550e8400-e29b-41d4-a716-446655440000",
   "service_type": "transcription",
@@ -61,8 +64,10 @@ En attente :
   "created_at": "2026-06-29T10:00:00Z",
   "updated_at": "2026-06-29T10:00:00Z"
 }
+```
 
 Terminé — le résultat est inliné directement, pas besoin d'un second appel :
+```bash
 {
   "job_id": "550e8400-e29b-41d4-a716-446655440000",
   "service_type": "transcription",
@@ -72,8 +77,10 @@ Terminé — le résultat est inliné directement, pas besoin d'un second appel 
   "created_at": "2026-06-29T10:00:00Z",
   "updated_at": "2026-06-29T10:02:34Z"
 }
+```
 
 En erreur :
+```bash
 {
   "job_id": "550e8400-e29b-41d4-a716-446655440000",
   "status": "failed",
@@ -81,11 +88,12 @@ En erreur :
   "created_at": "2026-06-29T10:00:00Z",
   "updated_at": "2026-06-29T10:01:05Z"
 }
+```
 
 ### Lister ses jobs 
 
-GET /jobs?limit=20&offset=0
-
+`GET /jobs?limit=20&offset=0`
+```bash
 {
   "consumer": "my-api-key",
   "total": 42,
@@ -111,16 +119,19 @@ GET /jobs?limit=20&offset=0
     }
   ]
 }
+```
+
 
 ### Annuler un job 
 
-DELETE /jobs/{service_type}/{id}
+`DELETE /jobs/{service_type}/{id}`
 
 Possible uniquement si le job est encore pending ou processing. Réponse 202 sans body.
 
 Si le job est déjà completed ou failed :
+```bash
 { "error": "job \"550e8400-...\" cannot be cancelled in state \"completed\"" }
-
+```
 ---
 
 ### Durée de vie des jobs et GC
