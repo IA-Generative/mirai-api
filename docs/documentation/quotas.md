@@ -36,13 +36,13 @@ Les niveaux **Découverte** et **Développeur** sont individuels et destinés à
 
 ### Audio — Transcription & Diarisation <Badge type="warning" text="Beta" />
 
-Les traitements audio étant longs (jusqu'à ~7 min pour 1 h d'audio), le quota est exprimé en **jobs simultanés** et **jobs par jour** plutôt qu'en requêtes par minute.
+Les traitements audio étant longs (jusqu'à ~7 min pour 1 h d'audio), le quota est exprimé en **jobs simultanés** et **Temps de traitement par jour** plutôt qu'en requêtes par minute.
 
-|                         | Découverte | Développeur | Intégration | Production | Critique           |
-| ----------------------- | ---------- | ----------- | ----------- | ---------- | ------------------ |
-| Jobs simultanés         | 1          | 3           | 4           | 10         | Défini par l'équipe MirAI |
-| Temps de process / jour | 3600       | 7200        | 21600       | 43200      | Défini par l'équipe MirAI |
-| Taille max par fichier  | 1 Go       | 1 Go        | 1 Go        | 1 Go       | 1 Go               |
+|                            | Découverte | Développeur | Intégration | Production | Critique           |
+| -------------------------- | ---------- | ----------- | ----------- | ---------- | ------------------ |
+| Jobs simultanés            | 1          | 3           | 4           | 10         | Défini par l'équipe MirAI |
+| Temps de traitement / jour | 3600       | 7200        | 21600       | 43200      | Défini par l'équipe MirAI |
+| Taille max par fichier     | 1 Go       | 1 Go        | 1 Go        | 1 Go       | 1 Go               |
 
 > Le débit global est partagé entre tous les consommateurs. En cas de file d'attente, la position est indiquée dans la réponse polling (`queue_position`).
 
