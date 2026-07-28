@@ -4,6 +4,13 @@ Historique des évolutions de MirAI API's — modèles, quotas, endpoints et com
 
 ---
 
+## Juillet 2026
+
+### Nouveautés
+- **Vision** — Ajout du service de compréhension d'images, modèle `Qwen3-VL-8B-Instruct`. Compatible OpenAI via `POST /v1/chat/completions` (contenu `image_url`, par URL ou base64). Description, OCR, VQA, lecture de documents. Taille de requête maximale : 50 Mo.
+
+---
+
 ## Juin 2026
 
 ### Nouveautés
