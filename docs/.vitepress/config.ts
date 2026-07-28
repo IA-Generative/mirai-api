@@ -46,6 +46,7 @@ export default defineConfig({
             text: 'Chat',
             items: [
               { text: 'LLM', link: '/fonctionnalites/llm' },
+              { text: 'Vision', link: '/fonctionnalites/vision' },
             ],
           },
           {
