@@ -3,6 +3,12 @@
 Historique des évolutions de MirAI API's — modèles, quotas, endpoints et comportements.
 
 ---
+## Aout 2026
+
+### Modèles
+- Suppression de `mistral-medium-albert` (API Albert/Etalab)
+
+---
 
 ## Juillet 2026
 
