@@ -36,7 +36,6 @@ Aucune autre modification n'est nécessaire pour les endpoints LLM, audio et emb
 | Function calling, agents (faible latence) | `tools` |
 | Interaction rapide, faible latence | `chat` |
 | Génération ou revue de code | `code` ou `code-completion` |
-| Accès au modèle Albert/Etalab | `mistral-medium-albert` |
 
 ### Le streaming est-il supporté ?
 

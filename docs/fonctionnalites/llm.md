@@ -16,7 +16,6 @@ Accès à 7 modèles de génération de texte via une interface 100% compatible 
 | `tools`                 | gemma-4-26B-A4B-it                  | 26B        | 107.8 | 0.95 s      | Function calling, agents (rapide)    |
 | `code`                  | Qwen3.6-35B-A3B                     | 35B        | —     | —           | Génération et revue de code          |
 | `code-completion`       | Qwen3.6-35B-A3B                     | 35B        | —     | —           | Complétion de code, copilot          |
-| `mistral-medium-albert` | mistral-medium-2508 (Albert/Etalab) | —          | —     | —           | Accès au modèle Albert/Etalab        |
 
 > Benchmarks réalisés en mai 2026 avec des prompts de 81–95 tokens.
 
@@ -68,11 +67,6 @@ Function calling / agents (haute qualité)        →  tools-pro
 Function calling / agents (faible latence)       →  tools
 Interaction rapide, faible latence               →  chat
 Génération ou revue de code                      →  code ou code-completion
-Accès au modèle Albert/Etalab spécifiquement     →  mistral-medium-albert
-```
-
-> `mistral-medium-albert` passe par l'API Albert/Etalab — sa latence dépend de la disponibilité de cette API externe et peut être variable.
->
 
 ---
 
