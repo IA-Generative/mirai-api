@@ -10,7 +10,7 @@ Pour toute demande d'accès, question technique ou incident, contacter l'**équi
 
 **Accès applicatif :** préciser les services souhaités et l'usage applicatif. L'équipe MirAI crée le compte Zitadel et transmet le token. Voir [Authentification](/documentation/authentification).
 
-> **Accès utilisateur individuel :** les tokens individuels seront délivrés via **MyMirAI** — pas encore disponible. Aucun accès manuel n'est possible en attendant.
+> **Accès utilisateur individuel :** les tokens individuels seront délivrés exclusivement via **MyMirAI** — pas encore disponible.
 
 ---
 
