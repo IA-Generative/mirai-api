@@ -4,7 +4,7 @@ Vue d'ensemble des services disponibles sur MirAI API's, avec leurs performances
 
 ---
 
-## Comparatif des services
+## Catalogue de services
 
 | Service | Statut | Débit mesuré | Latence p95 | Taux d'erreur |
 |---|---|---|---|---|
