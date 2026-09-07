@@ -1,6 +1,6 @@
 # LLM — Génération de texte
 
-Accès à 7 modèles de génération de texte via une interface 100% compatible OpenAI. Du modèle léger et rapide au modèle 120B paramètres pour les tâches complexes.
+Accès à 6 modèles de génération de texte via une interface 100% compatible OpenAI. Du modèle léger et rapide au modèle 120B paramètres pour les tâches complexes. Pour la compréhension d'images, voir [Vision](/fonctionnalites/vision).
 
 **Endpoint :** `POST /v1/chat/completions`
 
