@@ -2,7 +2,7 @@ name: Preview
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened, labeled]
+    types: [opened, synchronize, reopened, labeled, unlabeled, closed]
 
 concurrency:
   group: preview-${{ github.event.pull_request.number }}
@@ -10,8 +10,9 @@ concurrency:
 
 jobs:
   build:
-    # Only PRs labelled "preview", and never forks (no access to secrets/packages).
+    # Only open PRs labelled "preview", and never forks (no access to secrets/packages).
     if: >-
+      github.event.action != 'closed' && github.event.action != 'unlabeled' &&
       contains(github.event.pull_request.labels.*.name, 'preview') &&
       github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
@@ -56,4 +57,27 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --edit-last --create-if-none \
-            --body "🔍 Preview: https://pr-${PR}.preview.mirai.cpin.numerique-interieur.com (commit \`${SHA::8}\`, deployed by ArgoCD in a few minutes)"
+            --body "🔍 Preview: https://mirai-api-pr-${PR}.preview.mirai-hp.cpin.numerique-interieur.com (commit \`${SHA::8}\`, deployed by ArgoCD in a few minutes)"
+
+  # ArgoCD removes the namespace itself; this removes the PR images from ghcr.
+  cleanup:
+    if: >-
+      (github.event.action == 'closed' ||
+        (github.event.action == 'unlabeled' && github.event.label.name == 'preview')) &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PR: ${{ github.event.pull_request.number }}
+      PACKAGE: /orgs/${{ github.repository_owner }}/packages/container/mirai-api-docs/versions
+    steps:
+      - name: Delete pr-<n>-* image versions
+        run: |
+          gh api --paginate "$PACKAGE" \
+            --jq ".[] | select(any(.metadata.container.tags[]?; startswith(\"pr-${PR}-\"))) | .id" |
+          while read -r id; do
+            echo "Deleting version $id"
+            gh api -X DELETE "$PACKAGE/$id"
+          done
