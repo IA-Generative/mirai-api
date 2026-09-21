@@ -1,7 +1,8 @@
 # Preview par Pull Request
 
 Chaque PR portant le label `preview` obtient son propre namespace
-(`preview-mirai-api-<n>`) et une URL `https://pr-<n>.preview.mirai.cpin.numerique-interieur.com`.
+(`preview-mirai-api-<n>`) et une URL
+`https://mirai-api-pr-<n>.preview.mirai-hp.cpin.numerique-interieur.com`.
 
 ## Fonctionnement
 
@@ -27,11 +28,12 @@ Pour ajouter un autre dépôt, ajouter une entrée dans `preview.repositories`, 
 
 ## Prérequis
 
-- Secret `github-token` (clé `token`, lecture des PR) dans le namespace `infra-argo` (fait).
-- DNS wildcard `*.preview.mirai.cpin.numerique-interieur.com` vers l'ingress `mirai-nginx`
+- Lecture des PR par l'ApplicationSet : credential template GitHub App d'ArgoCD
+  (`preview.appSecretName`), installé sur l'organisation `IA-Generative`.
+- DNS wildcard `*.preview.mirai-hp.cpin.numerique-interieur.com` vers le LB `mirai-nginx`
   de `sdid-app-hp`. Les certificats sont émis par host via cert-manager avec le
-  `ClusterIssuer` `letsencrypt-prod` (annotation par défaut du chart) : son solver doit être
-  DNS-01 et couvrir la zone `preview.mirai.cpin.numerique-interieur.com`.
+  `ClusterIssuer` `letsencrypt-prod` (annotation par défaut du chart), en DNS-01 : le domaine doit
+  être dans `dnsZone` du chart cert-manager (ici `mirai-hp.cpin.numerique-interieur.com`).
 - Package ghcr `mirai-api-docs` privé. Un secret de pull nommé `registry-pull-secret`
   (type `kubernetes.io/dockerconfigjson`, token classic avec `read:packages`) doit être créé dans
   chaque namespace `preview-*` par un ExternalSecret, par exemple un `ClusterExternalSecret`
