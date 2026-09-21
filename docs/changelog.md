@@ -9,6 +9,12 @@ Historique des évolutions de MirAI API's — modèles, quotas, endpoints et com
 - **Ouverture du portail d'accès** — les niveaux **Découverte** (libre-service, par défaut) et **Développeur** (sur demande, puis libre-service) sont désormais disponibles via le [portail d'accès](https://acces.api.ai.numerique-interieur.com).
 - **Contacts mis à jour** — souscription et mise en service via le BRM de la DTNUM, accompagnement via un nouvel email dédié. Voir [Support](/support/).
 
+### Nouveautés
+- **Génération d'images** — Annonce du service, bientôt disponible : `POST /v1/images/generations`, alias `image` (Z-Image-Turbo). Ouverture d'abord en bêta restreinte.
+
+### Modèles
+- Ajout des aperçus `code-next` et `code-completion-next` (Qwen3.8-27B), appelés à remplacer Qwen3.6-35B-A3B sur `code` et `code-completion`
+
 ---
 ## Aout 2026
 
