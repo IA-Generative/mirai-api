@@ -1,6 +1,6 @@
 # LLM — Génération de texte
 
-Accès à 6 modèles de génération de texte via une interface 100% compatible OpenAI. Du modèle léger et rapide au modèle 120B paramètres pour les tâches complexes. Pour la compréhension d'images, voir [Vision](/fonctionnalites/vision).
+Accès à 8 modèles de génération de texte (dont 2 aperçus) via une interface 100% compatible OpenAI. Du modèle léger et rapide au modèle 120B paramètres pour les tâches complexes. Pour la compréhension d'images, voir [Vision](/fonctionnalites/vision) ; la génération d'images arrive bientôt, voir [Génération d'images](/fonctionnalites/generation).
 
 **Endpoint :** `POST /v1/chat/completions`
 
@@ -16,8 +16,12 @@ Accès à 6 modèles de génération de texte via une interface 100% compatible 
 | `tools`                 | gemma-4-26B-A4B-it                  | 26B        | 107.8 | 0.95 s      | Function calling, agents (rapide)    |
 | `code`                  | Qwen3.6-35B-A3B                     | 35B        | —     | —           | Génération et revue de code          |
 | `code-completion`       | Qwen3.6-35B-A3B                     | 35B        | —     | —           | Complétion de code, copilot          |
+| `code-next`             | Qwen3.8-27B                         | 27B        | —     | —           | Aperçu : génération et revue de code |
+| `code-completion-next`  | Qwen3.8-27B                         | 27B        | —     | —           | Aperçu : complétion de code, copilot |
 
 > Benchmarks réalisés en mai 2026 avec des prompts de 81–95 tokens.
+
+> `code-next` et `code-completion-next` sont des **aperçus** de Qwen3.8-27B, appelé à remplacer Qwen3.6-35B-A3B sur `code` et `code-completion`. Ils permettent de tester le futur modèle dès maintenant, mais peuvent évoluer ou être retirés lors du basculement.
 
 ---
 
@@ -67,6 +71,8 @@ Function calling / agents (haute qualité)        →  tools-pro
 Function calling / agents (faible latence)       →  tools
 Interaction rapide, faible latence               →  chat
 Génération ou revue de code                      →  code ou code-completion
+Tester le futur modèle de code (aperçu)          →  code-next ou code-completion-next
+```
 
 ---
 
