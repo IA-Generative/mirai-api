@@ -1,22 +1,31 @@
 # Authentification
 
-L'accès à MirAI API's est sécurisé via [Zitadel](https://zitadel.com/docs). Chaque consommateur reçoit un **token opaque** valable **1 an**, associé à un niveau d'accès qui détermine ses quotas.
+L'accès à MirAI API's est sécurisé par un **token opaque**, associé à un niveau d'accès qui détermine ses quotas.
 
 ---
 
-## Token
+## Token {#token}
 
 Chaque token est associé à un **niveau d'accès** (Découverte, Développeur, Intégration, Production, Critique) qui détermine les quotas applicables. Voir [Quotas et niveaux d'accès](/documentation/quotas) pour le détail des limites par niveau et les modalités d'obtention.
 
-**Durée de validité : 1 an.** À l'approche de l'expiration, renouveler le token avant interruption de service via le même canal d'obtention.
+**Durée de validité :**
+- **Découverte / Développeur** — jusqu'à 90 jours, choisie librement à la création du token sur le portail.
+- **Intégration / Production / Critique** — jusqu'à 1 an, fixée par l'équipe MirAI à la création.
+
+À l'approche de l'expiration, renouveler le token avant interruption de service via le même canal d'obtention.
 
 ---
 
 ## Obtenir un accès
 
-### Niveaux Découverte et Développeur
+### Niveau Découverte
 
-Les tokens individuels (**Découverte** et **Développeur**) sont délivrés via l'application **MyMirAI** — **pas encore disponible**. L'ouverture des accès individuels sera annoncée lors du lancement de MyMirAI.
+Libre-service, sans demande préalable : connectez-vous sur le [portail d'accès](https://acces.api.ai.numerique-interieur.com) et créez votre token — il s'affiche une seule fois, à copier immédiatement.
+
+### Niveau Développeur
+
+1. Demander l'accès auprès de l'équipe MirAI via l'[email d'accompagnement](/support/#contact)
+2. Une fois l'accès accordé, créer le token en libre-service sur le [portail d'accès](https://acces.api.ai.numerique-interieur.com), comme pour le niveau Découverte
 
 ### Niveaux Intégration, Production et Critique
 
@@ -24,7 +33,7 @@ L'accès applicatif n'est pas en libre-service :
 
 1. Contacter l'**équipe MirAI** via le [canal de support](/support/)
 2. Préciser le niveau souhaité, les services utilisés et le contexte applicatif
-3. L'équipe MirAI crée le compte Zitadel et transmet le token
+3. L'équipe MirAI crée le compte et vous transmet un lien à usage unique : ouvrez-le et confirmez pour générer votre token
 
 ---
 
@@ -62,6 +71,6 @@ client = OpenAI(
 
 | Code                    | Signification                    | Action                                                                                     |
 | ----------------------- | -------------------------------- | ------------------------------------------------------------------------------------------ |
-| `401 Unauthorized`      | Token absent, expiré ou malformé | Vérifier le header `Authorization: Bearer <TOKEN>` et la date d'expiration (validité 1 an) |
+| `401 Unauthorized`      | Token absent, expiré ou malformé | Vérifier le header `Authorization: Bearer <TOKEN>` et la [date d'expiration](#token)        |
 | `403 Forbidden`         | Token valide mais accès refusé   | Vérifier que le token dispose des droits nécessaires                                       |
 | `429 Too Many Requests` | Quota dépassé                    | Voir [Quotas et niveaux d'accès](/documentation/quotas)                                    |

@@ -60,12 +60,12 @@ Toutes les requêtes transitent par une gateway centralisée accessible à l'adr
 
 ## Accès
 
-| Niveau          | Profil                                | Obtention                                 |
-| --------------- | ------------------------------------- | ----------------------------------------- |
-| **Découverte**  | Individuel — tests, scripts           | Via **MyMirAI** — *pas encore disponible* |
-| **Développeur** | Individuel — prototypage, assistants de code | Via **MyMirAI** — *pas encore disponible* |
-| **Intégration** | Application en développement / pilote | Via l'équipe MirAI                               |
-| **Production**  | Application métier en production      | Via l'équipe MirAI                               |
-| **Critique**    | Service haute disponibilité           | Via l'équipe MirAI — sur demande                 |
+| Niveau          | Profil                                | Obtention                                                      |
+| --------------- | ------------------------------------- | --------------------------------------------------------------- |
+| **Découverte**  | Individuel — tests, scripts           | Libre-service, par défaut — [portail d'accès](https://acces.api.ai.numerique-interieur.com) |
+| **Développeur** | Individuel — prototypage, assistants de code | Sur demande, puis libre-service — [portail d'accès](https://acces.api.ai.numerique-interieur.com) |
+| **Intégration** | Application en développement / pilote | Via l'équipe MirAI                                               |
+| **Production**  | Application métier en production      | Via l'équipe MirAI                                               |
+| **Critique**    | Service haute disponibilité           | Via l'équipe MirAI — sur demande                                 |
 
 Voir [Quotas et niveaux d'accès](/documentation/quotas) pour le détail des limites par niveau.
