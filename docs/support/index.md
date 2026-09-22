@@ -4,13 +4,17 @@
 
 ## Contact
 
-Pour toute demande d'accès, question technique ou incident, contacter l'**équipe MirAI** :
+Deux canaux selon votre besoin :
 
-> **Email :** [service-team-sdid@interieur.gouv.fr](mailto:service-team-sdid@interieur.gouv.fr)
+> **Souscription et mise en service** (accès applicatif — Intégration, Production, Critique) — BRM de la DTNUM :
+> [dtnum-brm-contacts@interieur.gouv.fr](mailto:dtnum-brm-contacts@interieur.gouv.fr)
 
-**Accès applicatif :** préciser les services souhaités et l'usage applicatif. L'équipe MirAI crée le compte Zitadel et transmet le token. Voir [Authentification](/documentation/authentification).
+> **Accompagnement** (question technique, incident) :
+> [innovation-numerique-relations@interieur.gouv.fr](mailto:innovation-numerique-relations@interieur.gouv.fr)
 
-> **Accès utilisateur individuel :** les tokens individuels seront délivrés exclusivement via **MyMirAI** — pas encore disponible.
+**Accès applicatif :** préciser au BRM les services souhaités et l'usage applicatif. L'équipe MirAI crée le compte et transmet le token. Voir [Authentification](/documentation/authentification).
+
+**Accès utilisateur individuel :** le niveau **Découverte** est accessible par défaut, en libre-service, sur le [portail d'accès](https://acces.api.ai.numerique-interieur.com). Le niveau **Développeur** nécessite une demande préalable via l'email d'accompagnement ci-dessus, puis se crée aussi en libre-service sur le portail. Voir [Authentification](/documentation/authentification).
 
 ---
 
@@ -22,7 +26,7 @@ Pour toute demande d'accès, question technique ou incident, contacter l'**équi
 
 **Vérifier :**
 - Que le header `Authorization: Bearer <TOKEN>` est bien présent
-- Que le token n'a pas expiré — les tokens ont une **validité de 1 an**, contacter l'équipe MirAI pour renouvellement
+- Que le token n'a pas expiré — voir la durée de validité par niveau dans [Authentification](/documentation/authentification#token), et contacter l'équipe MirAI (voir [Contact](#contact)) pour renouvellement
 - Que vous n'envoyez pas le mot `Bearer` deux fois
 
 ```bash
@@ -42,7 +46,7 @@ Pour toute demande d'accès, question technique ou incident, contacter l'**équi
 
 **Vérifier :**
 - Que votre compte dispose bien des droits sur ce service
-- Pour les applications : que le client Zitadel a bien les scopes nécessaires
+- Pour les applications : que le token a bien été créé avec les services nécessaires
 
 ---
 
@@ -88,7 +92,7 @@ Compresser le fichier ou utiliser un format plus compact (`.ogg`, `.flac`) avant
 - Que le job n'a pas expiré (rétention 72 h)
 - Que le fichier soumis était lisible et dans un format supporté
 
-Si le job reste bloqué plus de 15 min, contacter l'équipe MirAI avec le `job_id`.
+Si le job reste bloqué plus de 15 min, contacter l'équipe MirAI (voir [Contact](#contact)) avec le `job_id`.
 
 ---
 

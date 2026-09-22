@@ -8,7 +8,7 @@ Cette section rassemble les guides d'utilisation, exemples d'intégration et ré
 
 ## Organisation
 
-- [Authentification](/documentation/authentification) — Obtention et utilisation du token Zitadel.
+- [Authentification](/documentation/authentification) — Obtention et utilisation du token.
 - [Exemples d'intégration](/documentation/exemples) — Exemples complets en Python, JavaScript et curl.
 - [Modes d'appel](/documentation/modes) — Synchrone vs asynchrone, jobs, polling et webhooks.
 - [Quotas et plans](/documentation/quotas) — Limites et comportement en cas de dépassement.
@@ -17,7 +17,7 @@ Cette section rassemble les guides d'utilisation, exemples d'intégration et ré
 
 ## Démarrage rapide
 
-1. Obtenez un token via l'équipe MirAI (voir la page [Authentification](/documentation/authentification)).
+1. Obtenez un token (voir la page [Authentification](/documentation/authentification)).
 2. Lancez un exemple depuis [Exemples d'intégration](/documentation/exemples).
 3. Adaptez le mode d'appel (synchrone / asynchrone) selon la durée et la taille des traitements (voir [Modes d'appel](/documentation/modes)).
 

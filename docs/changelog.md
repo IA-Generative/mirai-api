@@ -3,6 +3,13 @@
 Historique des évolutions de MirAI API's — modèles, quotas, endpoints et comportements.
 
 ---
+## Septembre 2026
+
+### Accès
+- **Ouverture du portail d'accès** — les niveaux **Découverte** (libre-service, par défaut) et **Développeur** (sur demande, puis libre-service) sont désormais disponibles via le [portail d'accès](https://acces.api.ai.numerique-interieur.com).
+- **Contacts mis à jour** — souscription et mise en service via le BRM de la DTNUM, accompagnement via un nouvel email dédié. Voir [Support](/support/).
+
+---
 ## Aout 2026
 
 ### Modèles
