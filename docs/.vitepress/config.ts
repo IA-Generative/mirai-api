@@ -47,6 +47,7 @@ export default defineConfig({
             items: [
               { text: 'LLM', link: '/fonctionnalites/llm' },
               { text: 'Vision', link: '/fonctionnalites/vision' },
+              { text: "Génération d'images", link: '/fonctionnalites/generation' },
             ],
           },
           {

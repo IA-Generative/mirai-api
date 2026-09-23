@@ -17,7 +17,9 @@ features:
   - title: 🎙️ Audio — Beta
     details: Transcription et diarisation jusqu'à 1 Go. Une heure d'audio transcrite en ~3 min 30 s, diarisée en ~6 min. Mode async natif avec webhook.
   - title: 🤖 LLM
-    details: 8 modèles de 24B à 120B paramètres. Jusqu'à 140 tok/s. Compatible SDK OpenAI — aucune modification de code si vous utilisez déjà l'API OpenAI.
+    details: 8 modèles de 26B à 120B paramètres. Jusqu'à 140 tok/s. Compatible SDK OpenAI — aucune modification de code si vous utilisez déjà l'API OpenAI.
+  - title: 🖼️ Génération d'images — Bientôt
+    details: Création d'images à partir d'une description texte, via l'API Images compatible OpenAI. Ouverture prochaine, d'abord en bêta restreinte.
   - title: 🔢 Embeddings — Beta
     details: 410 req/s en régime nominal. Vecteurs bge-m3 pour la recherche sémantique et la similarité. Compatible SDK OpenAI.
   - title: 📊 Reranking — Beta
