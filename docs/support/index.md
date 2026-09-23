@@ -14,7 +14,7 @@ Deux canaux selon votre besoin :
 
 **Accès applicatif :** préciser au BRM les services souhaités et l'usage applicatif. L'équipe MirAI crée le compte et transmet le token. Voir [Authentification](/documentation/authentification).
 
-**Accès utilisateur individuel :** le niveau **Découverte** est accessible par défaut, en libre-service, sur le [portail d'accès](https://acces.api.ai.numerique-interieur.com). Le niveau **Développeur** nécessite une demande préalable via l'email d'accompagnement ci-dessus, puis se crée aussi en libre-service sur le portail. Voir [Authentification](/documentation/authentification).
+**Accès utilisateur individuel :** le niveau **Découverte** est accessible par défaut, en libre-service, sur le [portail d'accès](https://acces.api.ai.numerique-interieur.com). Le niveau **Développeur** nécessite une demande préalable via l'email d'accompagnement ci-dessus, puis se crée aussi en libre-service sur le portail. Voir [Premiers pas sur le portail](/documentation/portail) pour un guide pas à pas.
 
 ---
 
