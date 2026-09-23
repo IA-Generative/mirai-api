@@ -130,6 +130,6 @@ Retry-After: 42
 
 ## Demander un accès ou changer de niveau
 
-- **Découverte :** aucune demande nécessaire, connectez-vous directement au [portail d'accès](https://acces.api.ai.numerique-interieur.com).
-- **Développeur :** demander l'accès auprès de l'équipe MirAI via l'[email d'accompagnement](/support/#contact), puis créer le token sur le portail.
+- **Découverte :** aucune demande nécessaire, connectez-vous directement au [portail d'accès](https://acces.api.ai.numerique-interieur.com) — voir [Premiers pas sur le portail](/documentation/portail).
+- **Développeur :** demander l'accès auprès de l'équipe MirAI via l'[email d'accompagnement](/support/#contact), puis créer le token sur le portail (même guide).
 - **Intégration, Production, Critique, ou changement de niveau :** contacter l'équipe MirAI via le [canal de support](/support/) en précisant le niveau souhaité, les services utilisés et le contexte applicatif.

@@ -56,6 +56,7 @@ export default defineConfig({
             ],
           },
           { text: 'Authentification', link: '/documentation/authentification' },
+          { text: "Premiers pas sur le portail", link: '/documentation/portail' },
           { text: 'Exemples', link: '/documentation/exemples' },
           { text: 'Jobs', link: '/documentation/jobs' },
           { text: 'Modes', link: '/documentation/modes' },

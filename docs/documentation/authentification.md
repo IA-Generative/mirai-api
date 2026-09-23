@@ -20,12 +20,12 @@ Chaque token est associé à un **niveau d'accès** (Découverte, Développeur, 
 
 ### Niveau Découverte
 
-Libre-service, sans demande préalable : connectez-vous sur le [portail d'accès](https://acces.api.ai.numerique-interieur.com) et créez votre token — il s'affiche une seule fois, à copier immédiatement.
+Libre-service, sans demande préalable : connectez-vous sur le [portail d'accès](https://acces.api.ai.numerique-interieur.com) et créez votre token — il s'affiche une seule fois, à copier immédiatement. Voir [Premiers pas sur le portail](/documentation/portail) pour un guide pas à pas avec captures d'écran.
 
 ### Niveau Développeur
 
 1. Demander l'accès auprès de l'équipe MirAI via l'[email d'accompagnement](/support/#contact)
-2. Une fois l'accès accordé, créer le token en libre-service sur le [portail d'accès](https://acces.api.ai.numerique-interieur.com), comme pour le niveau Découverte
+2. Une fois l'accès accordé, créer le token en libre-service sur le [portail d'accès](https://acces.api.ai.numerique-interieur.com), comme pour le niveau Découverte (voir [Premiers pas sur le portail](/documentation/portail))
 
 ### Niveaux Intégration, Production et Critique
 
