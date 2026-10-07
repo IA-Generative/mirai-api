@@ -12,7 +12,7 @@ Exemples complets pour chaque service, en Python (SDK OpenAI), JavaScript et cur
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gateway.api.ai.numerique-interieur.com",
+    base_url="https://api.mirai.interieur.gouv.fr",
     api_key="<TOKEN>"
 )
 
@@ -58,7 +58,7 @@ console.log(response.choices[0].message.content)
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gateway.api.ai.numerique-interieur.com",
+    base_url="https://api.mirai.interieur.gouv.fr",
     api_key="<TOKEN>"
 )
 
@@ -77,7 +77,7 @@ import fs from 'node:fs'
 import OpenAI from 'openai'
 
 const client = new OpenAI({
-  baseURL: 'https://gateway.api.ai.numerique-interieur.com',
+  baseURL: 'https://api.mirai.interieur.gouv.fr',
   apiKey: '<TOKEN>',
 })
 
@@ -93,7 +93,7 @@ console.log(result.text)
 ## Diarisation audio (async + webhook)
 
 ```bash
-curl -X POST https://gateway.api.ai.numerique-interieur.com/jobs/audio \
+curl -X POST https://api.mirai.interieur.gouv.fr/jobs/audio \
   -H "Authorization: Bearer <TOKEN>" \
   -F "model=pyannote-diarization" \
   -F "file=@reunion.wav" \
@@ -110,7 +110,7 @@ curl -X POST https://gateway.api.ai.numerique-interieur.com/jobs/audio \
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gateway.api.ai.numerique-interieur.com",
+    base_url="https://api.mirai.interieur.gouv.fr",
     api_key="<TOKEN>"
 )
 
@@ -139,7 +139,7 @@ vectors = [item.embedding for item in response.data]
 import httpx
 
 response = httpx.post(
-    "https://gateway.api.ai.numerique-interieur.com/v1/rerank",
+    "https://api.mirai.interieur.gouv.fr/v1/rerank",
     headers={"Authorization": "Bearer <TOKEN>"},
     json={
         "model": "bge-reranker-v2-m3",
@@ -166,7 +166,7 @@ from openai import OpenAI
 import httpx
 
 client = OpenAI(
-    base_url="https://gateway.api.ai.numerique-interieur.com",
+    base_url="https://api.mirai.interieur.gouv.fr",
     api_key="<TOKEN>"
 )
 
@@ -180,7 +180,7 @@ q_vec = client.embeddings.create(model="bge-m3", input=question).data[0].embeddi
 
 # 3. Reranking
 reranked = httpx.post(
-    "https://gateway.api.ai.numerique-interieur.com/v1/rerank",
+    "https://api.mirai.interieur.gouv.fr/v1/rerank",
     headers={"Authorization": "Bearer <TOKEN>"},
     json={
         "model": "bge-reranker-v2-m3",

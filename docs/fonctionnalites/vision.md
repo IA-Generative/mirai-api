@@ -29,7 +29,7 @@ Une image se transmet dans le champ `content` d'un message, via un bloc `image_u
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gateway.api.ai.numerique-interieur.com",
+    base_url="https://api.mirai.interieur.gouv.fr",
     api_key="<TOKEN>"
 )
 
@@ -53,7 +53,7 @@ import base64
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gateway.api.ai.numerique-interieur.com",
+    base_url="https://api.mirai.interieur.gouv.fr",
     api_key="<TOKEN>"
 )
 

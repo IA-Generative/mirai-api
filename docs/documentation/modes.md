@@ -16,7 +16,7 @@ La connexion reste ouverte jusqu'à la fin du traitement. La requête est forwar
 **Utilisé par :** LLM (`/v1/chat/completions`), embeddings (`/v1/embeddings`), reranking (`/v1/rerank`), transcription audio (`/v1/audio/transcriptions`).
 
 ```bash
-curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/chat/completions \
+curl -X POST https://api.mirai.interieur.gouv.fr/v1/chat/completions \
   -H "Authorization: Bearer <TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{"model": "chat-pro", "messages": [{"role": "user", "content": "Bonjour"}]}'

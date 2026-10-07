@@ -62,7 +62,7 @@ La réponse est un tableau trié par score décroissant. Le champ `text` n'est p
 import httpx
 
 response = httpx.post(
-    "https://gateway.api.ai.numerique-interieur.com/v1/rerank",
+    "https://api.mirai.interieur.gouv.fr/v1/rerank",
     headers={"Authorization": "Bearer <TOKEN>"},
     json={
         "model": "bge-reranker-v2-m3",
@@ -79,7 +79,7 @@ top_chunks = [r["text"] for r in ranked]
 ### curl
 
 ```bash
-curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/rerank \
+curl -X POST https://api.mirai.interieur.gouv.fr/v1/rerank \
   -H "Authorization: Bearer <TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{

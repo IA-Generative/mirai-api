@@ -31,7 +31,7 @@ Benchmark de charge réalisé en mai 2026 (73 VUs simultanés, ~20 min).
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gateway.api.ai.numerique-interieur.com",
+    base_url="https://api.mirai.interieur.gouv.fr",
     api_key="<TOKEN>"
 )
 
@@ -62,7 +62,7 @@ vectors = [item.embedding for item in response.data]
 ### curl
 
 ```bash
-curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/embeddings \
+curl -X POST https://api.mirai.interieur.gouv.fr/v1/embeddings \
   -H "Authorization: Bearer <TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{"model": "bge-m3", "input": "Texte à vectoriser"}'

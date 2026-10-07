@@ -16,7 +16,7 @@ Oui. Il suffit de changer le `base_url` :
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gateway.api.ai.numerique-interieur.com",
+    base_url="https://api.mirai.interieur.gouv.fr",
     api_key="<TOKEN>"
 )
 ```

@@ -3,6 +3,12 @@
 Historique des évolutions de MirAI API's — modèles, quotas, endpoints et comportements.
 
 ---
+## Octobre 2026
+
+### Accès
+- **Nouvel endpoint de production** — `api.mirai.interieur.gouv.fr` remplace `gateway.api.ai.numerique-interieur.com`. L'ancien endpoint est déprécié et sera retiré le **7 novembre 2026** ; mettez à jour vos intégrations avant cette date.
+
+---
 ## Septembre 2026
 
 ### Accès

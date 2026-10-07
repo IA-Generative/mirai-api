@@ -48,7 +48,7 @@ Authorization: Bearer <TOKEN>
 ### Exemple curl
 
 ```bash
-curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/chat/completions \
+curl -X POST https://api.mirai.interieur.gouv.fr/v1/chat/completions \
   -H "Authorization: Bearer <TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{"model": "chat-pro", "messages": [{"role": "user", "content": "Bonjour"}]}'
@@ -60,7 +60,7 @@ curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/chat/completions 
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gateway.api.ai.numerique-interieur.com",
+    base_url="https://api.mirai.interieur.gouv.fr",
     api_key="<TOKEN>"
 )
 ```
