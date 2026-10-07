@@ -6,7 +6,7 @@
 
 ### Mon token a expiré, que faire ?
 
-La durée de validité dépend du niveau — voir [Authentification](/documentation/authentification#token). Pour un token Découverte ou Développeur, recréez-le simplement sur le [portail d'accès](https://acces.api.ai.numerique-interieur.com) ; pour un token applicatif, contacter l'équipe MirAI via le [canal de support](/support/) pour le renouveler.
+La durée de validité dépend du niveau — voir [Authentification](/documentation/authentification#token). Pour un token Découverte ou Développeur, recréez-le simplement sur le [portail d'accès](https://acces.api.mirai.interieur.gouv.fr) ; pour un token applicatif, contacter l'équipe MirAI via le [canal de support](/support/) pour le renouveler.
 
 ### Puis-je utiliser le SDK OpenAI officiel ?
 

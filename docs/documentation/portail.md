@@ -1,6 +1,6 @@
 # Premiers pas sur le portail d'accès
 
-Ce guide montre, capture d'écran à l'appui, comment obtenir et gérer votre premier token depuis le [portail d'accès](https://acces.api.ai.numerique-interieur.com) — sans rien installer. Il s'adresse aux niveaux **Découverte** et **Développeur** (voir [Quotas et niveaux d'accès](/documentation/quotas)).
+Ce guide montre, capture d'écran à l'appui, comment obtenir et gérer votre premier token depuis le [portail d'accès](https://acces.api.mirai.interieur.gouv.fr) — sans rien installer. Il s'adresse aux niveaux **Découverte** et **Développeur** (voir [Quotas et niveaux d'accès](/documentation/quotas)).
 
 > Le niveau **Découverte** est actif par défaut : vous pouvez suivre ce guide immédiatement. Le niveau **Développeur** nécessite d'abord une demande auprès de l'équipe MirAI (voir [Contact](/support/#contact)) ; une fois l'accès accordé, la suite est identique.
 
@@ -8,7 +8,7 @@ Ce guide montre, capture d'écran à l'appui, comment obtenir et gérer votre pr
 
 ## 1. Se connecter
 
-Rendez-vous sur [acces.api.ai.numerique-interieur.com](https://acces.api.ai.numerique-interieur.com) et connectez-vous à MirAI — c'est la même connexion que pour les autres services MirAI, pas un compte à part. Vous arrivez sur la page **Utilisation**, vide tant qu'aucun token n'existe.
+Rendez-vous sur [acces.api.mirai.interieur.gouv.fr](https://acces.api.mirai.interieur.gouv.fr) et connectez-vous à MirAI — c'est la même connexion que pour les autres services MirAI, pas un compte à part. Vous arrivez sur la page **Utilisation**, vide tant qu'aucun token n'existe.
 
 ![Page d'accueil du portail après connexion](/portail/01-connexion.jpg)
 

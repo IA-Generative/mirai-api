@@ -6,7 +6,7 @@ MirAI API's est la plateforme d'inférence IA du ministère. Elle expose une API
 
 **Documentation interactive (Swagger) :** https://api.mirai.interieur.gouv.fr/docs
 
-> **Changement d'endpoint.** L'ancien endpoint `gateway.api.ai.numerique-interieur.com` est **déprécié** et sera retiré le **7 novembre 2026**. Mettez à jour vos intégrations vers `api.mirai.interieur.gouv.fr` avant cette date — passé le 7 novembre 2026, les appels vers l'ancien endpoint ne fonctionneront plus.
+> **Changement d'endpoints.** Les anciens endpoints `gateway.api.ai.numerique-interieur.com` (API) et `acces.api.ai.numerique-interieur.com` ([portail d'accès](https://acces.api.mirai.interieur.gouv.fr)) sont **dépréciés** et seront retirés le **7 novembre 2026**. Mettez à jour vos intégrations vers `api.mirai.interieur.gouv.fr` et `acces.api.mirai.interieur.gouv.fr` avant cette date — passé le 7 novembre 2026, les appels vers les anciens endpoints ne fonctionneront plus.
 
 ---
 
@@ -65,8 +65,8 @@ Toutes les requêtes transitent par une gateway centralisée accessible à l'adr
 
 | Niveau          | Profil                                | Obtention                                                      |
 | --------------- | ------------------------------------- | --------------------------------------------------------------- |
-| **Découverte**  | Individuel — tests, scripts           | Libre-service, par défaut — [portail d'accès](https://acces.api.ai.numerique-interieur.com) |
-| **Développeur** | Individuel — prototypage, assistants de code | Sur demande, puis libre-service — [portail d'accès](https://acces.api.ai.numerique-interieur.com) |
+| **Découverte**  | Individuel — tests, scripts           | Libre-service, par défaut — [portail d'accès](https://acces.api.mirai.interieur.gouv.fr) |
+| **Développeur** | Individuel — prototypage, assistants de code | Sur demande, puis libre-service — [portail d'accès](https://acces.api.mirai.interieur.gouv.fr) |
 | **Intégration** | Application en développement / pilote | Via l'équipe MirAI                                               |
 | **Production**  | Application métier en production      | Via l'équipe MirAI                                               |
 | **Critique**    | Service haute disponibilité           | Via l'équipe MirAI — sur demande                                 |

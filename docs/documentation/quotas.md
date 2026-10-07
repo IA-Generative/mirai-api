@@ -10,8 +10,8 @@ Les quotas sont déterminés par le **niveau d'accès** associé à votre token.
 
 | Niveau           | Profil                                                                  | Obtention                                                                                    |
 | ---------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
-| **Découverte**   | Tests, scripts, outils personnels — premiers pas                        | Libre-service, par défaut — [portail d'accès](https://acces.api.ai.numerique-interieur.com)  |
-| **Développeur**  | Prototypage, assistants de code (Claude Code, Copilot…) — usage soutenu | Sur demande, puis libre-service — [portail d'accès](https://acces.api.ai.numerique-interieur.com) |
+| **Découverte**   | Tests, scripts, outils personnels — premiers pas                        | Libre-service, par défaut — [portail d'accès](https://acces.api.mirai.interieur.gouv.fr)  |
+| **Développeur**  | Prototypage, assistants de code (Claude Code, Copilot…) — usage soutenu | Sur demande, puis libre-service — [portail d'accès](https://acces.api.mirai.interieur.gouv.fr) |
 
 ### Accès application (via l'équipe MirAI)
 
@@ -130,6 +130,6 @@ Retry-After: 42
 
 ## Demander un accès ou changer de niveau
 
-- **Découverte :** aucune demande nécessaire, connectez-vous directement au [portail d'accès](https://acces.api.ai.numerique-interieur.com) — voir [Premiers pas sur le portail](/documentation/portail).
+- **Découverte :** aucune demande nécessaire, connectez-vous directement au [portail d'accès](https://acces.api.mirai.interieur.gouv.fr) — voir [Premiers pas sur le portail](/documentation/portail).
 - **Développeur :** demander l'accès auprès de l'équipe MirAI via l'[email d'accompagnement](/support/#contact), puis créer le token sur le portail (même guide).
 - **Intégration, Production, Critique, ou changement de niveau :** contacter l'équipe MirAI via le [canal de support](/support/) en précisant le niveau souhaité, les services utilisés et le contexte applicatif.
