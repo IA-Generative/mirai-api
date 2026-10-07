@@ -75,7 +75,7 @@ Benchmarks réalisés en mai 2026 sur 27 jobs, modèle chaud.
 ### Transcription simple (curl)
 
 ```bash
-curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/transcriptions \
+curl -X POST https://api.mirai.interieur.gouv.fr/v1/audio/transcriptions \
   -H "Authorization: Bearer <TOKEN>" \
   -F "file=@interview.wav"
 # → {"text": "Bonjour, bienvenue..."}
@@ -84,7 +84,7 @@ curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/transcripti
 ### Avec diarisation
 
 ```bash
-curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/transcriptions \
+curl -X POST https://api.mirai.interieur.gouv.fr/v1/audio/transcriptions \
   -H "Authorization: Bearer <TOKEN>" \
   -F "file=@conference.mp4" \
   -F "diarization=true" \
@@ -94,7 +94,7 @@ curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/transcripti
 ### Avec langue forcée et timestamps par mot
 
 ```bash
-curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/transcriptions \
+curl -X POST https://api.mirai.interieur.gouv.fr/v1/audio/transcriptions \
   -H "Authorization: Bearer <TOKEN>" \
   -F "file=@interview.wav" \
   -F "language=fr" \
@@ -105,7 +105,7 @@ curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/transcripti
 ### Format SRT (sous-titres)
 
 ```bash
-curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/transcriptions \
+curl -X POST https://api.mirai.interieur.gouv.fr/v1/audio/transcriptions \
   -H "Authorization: Bearer <TOKEN>" \
   -F "file=@conference.mp4" \
   -F "response_format=srt"
@@ -117,7 +117,7 @@ curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/transcripti
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gateway.api.ai.numerique-interieur.com",
+    base_url="https://api.mirai.interieur.gouv.fr",
     api_key="<TOKEN>"
 )
 
@@ -138,7 +138,7 @@ for word in result.words:
 ### Async (batch / fichiers volumineux)
 
 ```bash
-curl -X POST https://gateway.api.ai.numerique-interieur.com/jobs/audio \
+curl -X POST https://api.mirai.interieur.gouv.fr/jobs/audio \
   -H "Authorization: Bearer <TOKEN>" \
   -F "model=faster-whisper-large-v3-turbo" \
   -F "operation=transcription" \

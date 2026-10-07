@@ -99,7 +99,7 @@ Si le job reste bloqué plus de 15 min, contacter l'équipe MirAI (voir [Contact
 ## Vérifier l'état du service
 
 ```bash
-curl https://gateway.api.ai.numerique-interieur.com/health
+curl https://api.mirai.interieur.gouv.fr/health
 # → {"status": "ok"}
 ```
 
@@ -108,7 +108,7 @@ curl https://gateway.api.ai.numerique-interieur.com/health
 ## Tester rapidement l'authentification
 
 ```bash
-curl https://gateway.api.ai.numerique-interieur.com/v1/models \
+curl https://api.mirai.interieur.gouv.fr/v1/models \
   -H "Authorization: Bearer <TOKEN>"
 ```
 

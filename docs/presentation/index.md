@@ -2,9 +2,11 @@
 
 MirAI API's est la plateforme d'inférence IA du ministère. Elle expose une API unifiée et standardisée pour consommer des modèles d'intelligence artificielle — audio, texte, recherche sémantique — sans se préoccuper de l'infrastructure sous-jacente.
 
-**Endpoint de production :** https://gateway.api.ai.numerique-interieur.com
+**Endpoint de production :** https://api.mirai.interieur.gouv.fr
 
-**Documentation interactive (Swagger) :** https://gateway.api.ai.numerique-interieur.com/docs
+**Documentation interactive (Swagger) :** https://api.mirai.interieur.gouv.fr/docs
+
+> **Changement d'endpoint.** L'ancien endpoint `gateway.api.ai.numerique-interieur.com` est **déprécié** et sera retiré le **7 novembre 2026**. Mettez à jour vos intégrations vers `api.mirai.interieur.gouv.fr` avant cette date — passé le 7 novembre 2026, les appels vers l'ancien endpoint ne fonctionneront plus.
 
 ---
 
@@ -34,7 +36,7 @@ Les performances sont issues de benchmarks réels, pas de promesses marketing. L
 
 ## Gateway
 
-Toutes les requêtes transitent par une gateway centralisée accessible à l'adresse https://gateway.api.ai.numerique-interieur.com. Elle est responsable de :
+Toutes les requêtes transitent par une gateway centralisée accessible à l'adresse https://api.mirai.interieur.gouv.fr. Elle est responsable de :
 
 - **Routage** — chaque requête est dirigée vers le bon service selon le modèle et le type d'opération
 - **Rate limiting** — application des quotas par consommateur en fenêtre fixe

@@ -100,7 +100,7 @@ Benchmarks réalisés en mai 2026 sur 40 jobs complétés. **Taux d'erreur : 0% 
 ### Synchrone (curl)
 
 ```bash
-curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/diarizations \
+curl -X POST https://api.mirai.interieur.gouv.fr/v1/audio/diarizations \
   -H "Authorization: Bearer <TOKEN>" \
   -F "model=pyannote-diarization" \
   -F "file=@reunion.wav"
@@ -109,7 +109,7 @@ curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/diarization
 ### Avec nombre de locuteurs forcé
 
 ```bash
-curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/diarizations \
+curl -X POST https://api.mirai.interieur.gouv.fr/v1/audio/diarizations \
   -H "Authorization: Bearer <TOKEN>" \
   -F "model=pyannote-diarization" \
   -F "file=@entretien.wav" \
@@ -119,7 +119,7 @@ curl -X POST https://gateway.api.ai.numerique-interieur.com/v1/audio/diarization
 ### Asynchrone avec webhook (recommandé pour fichiers > 30 s)
 
 ```bash
-curl -X POST https://gateway.api.ai.numerique-interieur.com/jobs/audio \
+curl -X POST https://api.mirai.interieur.gouv.fr/jobs/audio \
   -H "Authorization: Bearer <TOKEN>" \
   -F "model=pyannote-diarization" \
   -F "operation=diarization" \

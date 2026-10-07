@@ -7,7 +7,7 @@ Le fichier est soumis, un job_id est retourné immédiatement. Le résultat est 
 Adapté aux : traitements en batch, architectures événementielles, fichiers volumineux ou longs.
 
 ```bash
-curl -X POST https://gateway.api.ai.numerique-interieur.com/jobs/transcription \
+curl -X POST https://api.mirai.interieur.gouv.fr/jobs/transcription \
   -F file=@audio.wav \
   -F model=whisper-large-v3 \
   -F callback_url=https://myapp.com/webhook
@@ -25,7 +25,7 @@ curl -X POST https://gateway.api.ai.numerique-interieur.com/jobs/transcription \
 Fournir un `callback_url` pour être notifié dès la complétion du job async, sans polling.
 
 ```bash
-curl -X POST https://gateway.api.ai.numerique-interieur.com/jobs/audio \
+curl -X POST https://api.mirai.interieur.gouv.fr/jobs/audio \
   -H "Authorization: Bearer <TOKEN>" \
   -F "file=@conference.mp3" \
   -F "callback_url=https://mon-app.example.com/hooks/ia"
