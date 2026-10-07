@@ -50,6 +50,24 @@ docs:
       - secretName: api.mirai.cpin.numerique-interieur.com-tls
         hosts:
           - api.mirai.cpin.numerique-interieur.com
+  # Second Ingress, same Service/backend, separate object: a cert-manager
+  # cluster-issuer annotation applies to a whole Ingress, not per-host, so a
+  # second issuer (HTTP-01 here, vs. DNS-01 for the host above) needs its own
+  # Ingress resource rather than another entry under ingress.hosts.
+  ingressExtra:
+    enabled: true
+    className: mirai-nginx
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod-http
+    hosts:
+      - host: docs.api.mirai.interieur.gouv.fr
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: docs.api.mirai.interieur.gouv.fr-tls
+        hosts:
+          - docs.api.mirai.interieur.gouv.fr
   resources:
     requests:
       cpu: 100m

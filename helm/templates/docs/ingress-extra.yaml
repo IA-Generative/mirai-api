@@ -1,0 +1,61 @@
+{{- if .Values.docs.ingressExtra.enabled -}}
+{{- $fullName := printf "%s-extra" (include "template.docs.fullname" .) -}}
+{{- $svcPort := .Values.docs.service.port -}}
+{{- if and .Values.docs.ingressExtra.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
+  {{- if not (hasKey .Values.docs.ingressExtra.annotations "kubernetes.io/ingress.class") }}
+  {{- $_ := set .Values.docs.ingressExtra.annotations "kubernetes.io/ingress.class" .Values.docs.ingressExtra.className}}
+  {{- end }}
+{{- end }}
+{{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion -}}
+apiVersion: networking.k8s.io/v1
+{{- else if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
+apiVersion: networking.k8s.io/v1beta1
+{{- else -}}
+apiVersion: extensions/v1beta1
+{{- end }}
+kind: Ingress
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "template.docs.labels" . | nindent 4 }}
+  {{- with .Values.docs.ingressExtra.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  {{- if and .Values.docs.ingressExtra.className (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion) }}
+  ingressClassName: {{ .Values.docs.ingressExtra.className }}
+  {{- end }}
+  {{- if .Values.docs.ingressExtra.tls }}
+  tls:
+    {{- range .Values.docs.ingressExtra.tls }}
+    - hosts:
+        {{- range .hosts }}
+        - {{ . | quote }}
+        {{- end }}
+      secretName: {{ .secretName }}
+    {{- end }}
+  {{- end }}
+  rules:
+    {{- range .Values.docs.ingressExtra.hosts }}
+    - host: {{ .host | quote }}
+      http:
+        paths:
+          {{- range .paths }}
+          - path: {{ .path }}
+            {{- if and .pathType (semverCompare ">=1.18-0" $.Capabilities.KubeVersion.GitVersion) }}
+            pathType: {{ .pathType }}
+            {{- end }}
+            backend:
+              {{- if semverCompare ">=1.19-0" $.Capabilities.KubeVersion.GitVersion }}
+              service:
+                name: {{ include "template.docs.fullname" $ }}
+                port:
+                  number: {{ $svcPort }}
+              {{- else }}
+              serviceName: {{ include "template.docs.fullname" $ }}
+              servicePort: {{ $svcPort }}
+              {{- end }}
+          {{- end }}
+    {{- end }}
+{{- end }}
