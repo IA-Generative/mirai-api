@@ -8,6 +8,10 @@ Historique des évolutions de MirAI API's — modèles, quotas, endpoints et com
 ### Accès
 - **Nouveaux endpoints de production** — `api.mirai.interieur.gouv.fr` remplace `gateway.api.ai.numerique-interieur.com`, et `acces.api.mirai.interieur.gouv.fr` remplace `acces.api.ai.numerique-interieur.com` (portail d'accès). Les deux anciens endpoints sont dépréciés et seront retirés le **7 novembre 2026** ; mettez à jour vos intégrations avant cette date.
 
+### Quotas
+- **LLM, niveau Découverte** — tokens/minute relevé à 50 000 (était 30 000) ; plafond journalier relevé à 1 000 000 (était 500 000).
+- **LLM, niveau Développeur** — le plafond de 8 000 000 tokens s'applique désormais sur une fenêtre de **5 h** plutôt que 24 h.
+
 ---
 ## Septembre 2026
 
