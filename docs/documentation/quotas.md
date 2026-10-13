@@ -34,11 +34,11 @@ Le niveau **Découverte** est accessible par défaut, sans demande préalable. L
 |                   | Découverte | Développeur |
 | ----------------- | ---------- | ----------- |
 | Requêtes / minute | 10         | 30          |
-| Tokens / minute   | 50 000     | 200 000     |
+| Tokens / minute   | 50 000     | 400 000     |
 | Tokens / 24 h     | 1 000 000  | —           |
 | Tokens / 5 h      | —          | 8 000 000   |
 
-> Le niveau **Développeur** offre une fenêtre tokens/minute élevée (200 000) pour absorber les rafales des assistants de code, qui envoient de gros contextes à chaque requête.
+> Le niveau **Développeur** offre une fenêtre tokens/minute élevée (400 000) pour absorber les rafales des assistants de code, qui envoient de gros contextes à chaque requête.
 
 #### Accès application
 
