@@ -35,30 +35,28 @@ Chaque modèle expose désormais **deux formes de nom** : un alias court et un n
 
 Vous pouvez toujours savoir quel moteur a traité votre requête — de deux façons.
 
-**1. Le champ `model` de la réponse** indique la version qui a répondu :
+**1. Le champ `model` de la réponse** renvoie le **moteur réel** qui a répondu :
 
 ```json
 {
   "id": "chatcmpl-...",
-  "model": "code-1.0",
+  "model": "Qwen/Qwen3.8-27B-FP8",
   "choices": [ ... ]
 }
 ```
 
-Ainsi, un appel à l'alias flottant `code` vous renvoie la version concrète qui l'a servi (p. ex. `code-1.0`).
+Vous savez ainsi exactement quel moteur a traité la requête. Avec un **alias flottant** (p. ex. `code`), tout changement de moteur — lors d'une montée de version — devient immédiatement visible dans ce champ ; avec un **nom figé** (p. ex. `code-1.0`), ce champ renvoie toujours le même moteur.
 
-**2. L'endpoint `GET /v1/models`** liste chaque modèle avec son moteur réel :
+**2. L'endpoint `GET /v1/models`** liste chaque modèle avec son moteur réel dans le champ `backend_model` :
 
 ```json
 {
   "id": "code-1.0",
-  "canonical_model": "code-1.0",
   "backend_model": "Qwen/Qwen3.8-27B-FP8"
 }
 ```
 
-- `canonical_model` — le nom de version canonique renvoyé dans les réponses.
-- `backend_model` — le moteur réel sous-jacent.
+- `backend_model` — le moteur réel sous-jacent. Le tableau [Noms figés disponibles](#noms-figés-disponibles) ci-dessus donne la correspondance nom ↔ moteur pour chaque version.
 
 ---
 
