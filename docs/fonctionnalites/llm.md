@@ -1,6 +1,8 @@
 # LLM — Génération de texte
 
-Accès à 8 modèles de génération de texte (dont 2 aperçus) via une interface 100% compatible OpenAI. Du modèle léger et rapide au modèle 120B paramètres pour les tâches complexes. Pour la compréhension d'images, voir [Vision](/fonctionnalites/vision) ; la génération d'images arrive bientôt, voir [Génération d'images](/fonctionnalites/generation).
+Accès à plusieurs modèles de génération de texte via une interface 100% compatible OpenAI. Du modèle léger et rapide au modèle 120B paramètres pour les tâches complexes. Pour la compréhension d'images, voir [Vision](/fonctionnalites/vision) ; la génération d'images arrive bientôt, voir [Génération d'images](/fonctionnalites/generation).
+
+Chaque modèle possède un **alias flottant** (`chat`, `code`, …) et un **nom figé versionné** (`chat-1.0`, `code-1.0`, …) ; privilégiez le nom figé en production. Voir [Versionnage des modèles](/documentation/versionnage-modeles).
 
 **Endpoint :** `POST /v1/chat/completions`
 
@@ -16,12 +18,14 @@ Accès à 8 modèles de génération de texte (dont 2 aperçus) via une interfac
 | `tools`                 | gemma-4-26B-A4B-it                  | 26B        | 107.8 | 0.95 s      | Function calling, agents (rapide)    |
 | `code`                  | Qwen3.6-35B-A3B                     | 35B        | —     | —           | Génération et revue de code          |
 | `code-completion`       | Qwen3.6-35B-A3B                     | 35B        | —     | —           | Complétion de code, copilot          |
-| `code-next`             | Qwen3.8-27B                         | 27B        | —     | —           | Aperçu : génération et revue de code |
-| `code-completion-next`  | Qwen3.8-27B                         | 27B        | —     | —           | Aperçu : complétion de code, copilot |
+| `code-1.0`              | Qwen3.8-27B                         | 27B        | —     | —           | Génération et revue de code (nouveau moteur) |
+| `code-completion-1.0`   | Qwen3.8-27B                         | 27B        | —     | —           | Complétion de code, copilot (nouveau moteur) |
+| `code-next`             | Qwen3.8-27B                         | 27B        | —     | —           | ⚠️ Déprécié — migrer vers `code-1.0` |
+| `code-completion-next`  | Qwen3.8-27B                         | 27B        | —     | —           | ⚠️ Déprécié — migrer vers `code-completion-1.0` |
 
 > Benchmarks réalisés en mai 2026 avec des prompts de 81–95 tokens.
 
-> `code-next` et `code-completion-next` sont des **aperçus** de Qwen3.8-27B, appelé à remplacer Qwen3.6-35B-A3B sur `code` et `code-completion`. Ils permettent de tester le futur modèle dès maintenant, mais peuvent évoluer ou être retirés lors du basculement.
+> **`code-next` et `code-completion-next` sont dépréciés.** C'étaient des aperçus de Qwen3.8-27B, désormais remplacés par les noms figés `code-1.0` et `code-completion-1.0` (même moteur). Ils seront **retirés le 30 novembre 2026** — migrez avant cette date. Détails : [Versionnage des modèles](/documentation/versionnage-modeles).
 
 ---
 
@@ -71,7 +75,7 @@ Function calling / agents (haute qualité)        →  tools-pro
 Function calling / agents (faible latence)       →  tools
 Interaction rapide, faible latence               →  chat
 Génération ou revue de code                      →  code ou code-completion
-Tester le futur modèle de code (aperçu)          →  code-next ou code-completion-next
+Nouveau moteur de code (Qwen3.8)                 →  code-1.0 ou code-completion-1.0
 ```
 
 ---
