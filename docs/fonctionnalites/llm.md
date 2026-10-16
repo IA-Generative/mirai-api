@@ -10,24 +10,22 @@ Chaque modèle possède un **alias flottant** (`chat`, `code`, …) et un **nom 
 
 ## Catalogue des modèles
 
-| Alias                   | Moteur réel (`backend_model`)   | Paramètres | Contexte max        | tok/s | Latence moy | Usage recommandé                     |
-| ----------------------- | ------------------------------- | ---------- | ------------------- | ----- | ----------- | ------------------------------------ |
-| `chat-pro`              | `openai/gpt-oss-120b`           | 120B       | 131 072 (~128K)     | 117.6 | 1.38 s      | Réponses riches, synthèse, analyse   |
-| `tools-pro`             | `openai/gpt-oss-120b`           | 120B       | 131 072 (~128K)     | 124.4 | 1.03 s      | Function calling, agents (120B)      |
-| `chat`                  | `google/gemma-4-26B-A4B-it`     | 26B        | 131 072 (~128K)     | 104.0 | 1.05 s      | Interactions rapides, faible latence |
-| `tools`                 | `google/gemma-4-26B-A4B-it`     | 26B        | 131 072 (~128K)     | 107.8 | 0.95 s      | Function calling, agents (rapide)    |
-| `code`                  | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | Génération et revue de code          |
-| `code-completion`       | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | Complétion de code, copilot          |
-| `code-1.0`              | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | Idem `code`, version figée           |
-| `code-completion-1.0`   | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | Idem `code-completion`, version figée |
-| `code-next`             | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | ⚠️ Déprécié — migrer vers `code-1.0` |
-| `code-completion-next`  | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | ⚠️ Déprécié — migrer vers `code-completion-1.0` |
+| Alias flottant     | Nom figé                | Moteur réel (`backend_model`)   | Paramètres | Contexte max     | tok/s | Usage recommandé                     |
+| ------------------ | ----------------------- | ------------------------------- | ---------- | ---------------- | ----- | ------------------------------------ |
+| `chat-pro`         | `chat-pro-1.0`          | `openai/gpt-oss-120b`           | 120B       | 131 072 (~128K)  | 117.6 | Réponses riches, synthèse, analyse   |
+| `tools-pro`        | `tools-pro-1.0`         | `openai/gpt-oss-120b`           | 120B       | 131 072 (~128K)  | 124.4 | Function calling, agents (120B)      |
+| `chat`             | `chat-1.0`              | `google/gemma-4-26B-A4B-it`     | 26B        | 131 072 (~128K)  | 104.0 | Interactions rapides, faible latence |
+| `tools`            | `tools-1.0`             | `google/gemma-4-26B-A4B-it`     | 26B        | 131 072 (~128K)  | 107.8 | Function calling, agents (rapide)    |
+| `code`             | `code-1.0`              | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)  | —     | Génération et revue de code          |
+| `code-completion`  | `code-completion-1.0`   | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)  | —     | Complétion de code, copilot          |
+
+> Chaque modèle est accessible par son **alias flottant** (dernière version) ou son **nom figé** (version immuable, recommandée en production). Les deux pointent sur le même moteur. Voir [Versionnage des modèles](/documentation/versionnage-modeles).
 
 > **Contexte max** = nombre de tokens par requête (entrée + sortie cumulées). L'identifiant du **moteur réel** est aussi renvoyé dans le champ `model` des réponses et dans `backend_model` de `GET /v1/models` — pratique pour vérifier exactement quel moteur traite vos requêtes.
 
 > Benchmarks réalisés en mai 2026 avec des prompts de 81–95 tokens.
 
-> **`code-next` et `code-completion-next` sont dépréciés.** C'étaient des aperçus de Qwen3.8-27B, désormais remplacés par les noms figés `code-1.0` et `code-completion-1.0` (même moteur). Ils seront **retirés le 30 novembre 2026** — migrez avant cette date. Détails : [Versionnage des modèles](/documentation/versionnage-modeles).
+> ⚠️ **`code-next` et `code-completion-next` sont dépréciés.** C'étaient des aperçus de Qwen3.8-27B, désormais remplacés par les noms figés `code-1.0` et `code-completion-1.0` (même moteur). Ils seront **retirés le 30 novembre 2026** — migrez avant cette date. Détails : [Versionnage des modèles](/documentation/versionnage-modeles).
 
 ---
 
