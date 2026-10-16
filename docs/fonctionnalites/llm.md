@@ -10,18 +10,20 @@ Chaque modèle possède un **alias flottant** (`chat`, `code`, …) et un **nom 
 
 ## Catalogue des modèles
 
-| Alias                   | Modèle                              | Paramètres | tok/s | Latence moy | Usage recommandé                     |
-| ----------------------- | ----------------------------------- | ---------- | ----- | ----------- | ------------------------------------ |
-| `chat-pro`              | gpt-oss-120b                        | 120B       | 117.6 | 1.38 s      | Réponses riches, synthèse, analyse   |
-| `tools-pro`             | gpt-oss-120b                        | 120B       | 124.4 | 1.03 s      | Function calling, agents (120B)      |
-| `chat`                  | gemma-4-26B-A4B-it                  | 26B        | 104.0 | 1.05 s      | Interactions rapides, faible latence |
-| `tools`                 | gemma-4-26B-A4B-it                  | 26B        | 107.8 | 0.95 s      | Function calling, agents (rapide)    |
-| `code`                  | Qwen3.6-35B-A3B                     | 35B        | —     | —           | Génération et revue de code          |
-| `code-completion`       | Qwen3.6-35B-A3B                     | 35B        | —     | —           | Complétion de code, copilot          |
-| `code-1.0`              | Qwen3.8-27B                         | 27B        | —     | —           | Génération et revue de code (nouveau moteur) |
-| `code-completion-1.0`   | Qwen3.8-27B                         | 27B        | —     | —           | Complétion de code, copilot (nouveau moteur) |
-| `code-next`             | Qwen3.8-27B                         | 27B        | —     | —           | ⚠️ Déprécié — migrer vers `code-1.0` |
-| `code-completion-next`  | Qwen3.8-27B                         | 27B        | —     | —           | ⚠️ Déprécié — migrer vers `code-completion-1.0` |
+| Alias                   | Moteur réel (`backend_model`)   | Paramètres | Contexte max        | tok/s | Latence moy | Usage recommandé                     |
+| ----------------------- | ------------------------------- | ---------- | ------------------- | ----- | ----------- | ------------------------------------ |
+| `chat-pro`              | `openai/gpt-oss-120b`           | 120B       | 131 072 (~128K)     | 117.6 | 1.38 s      | Réponses riches, synthèse, analyse   |
+| `tools-pro`             | `openai/gpt-oss-120b`           | 120B       | 131 072 (~128K)     | 124.4 | 1.03 s      | Function calling, agents (120B)      |
+| `chat`                  | `google/gemma-4-26B-A4B-it`     | 26B        | 131 072 (~128K)     | 104.0 | 1.05 s      | Interactions rapides, faible latence |
+| `tools`                 | `google/gemma-4-26B-A4B-it`     | 26B        | 131 072 (~128K)     | 107.8 | 0.95 s      | Function calling, agents (rapide)    |
+| `code`                  | `Qwen/Qwen3.6-35B-A3B`          | 35B        | 131 072 (~128K)     | —     | —           | Génération et revue de code          |
+| `code-completion`       | `Qwen/Qwen3.6-35B-A3B`          | 35B        | 131 072 (~128K)     | —     | —           | Complétion de code, copilot          |
+| `code-1.0`              | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | Génération et revue de code (nouveau moteur) |
+| `code-completion-1.0`   | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | Complétion de code, copilot (nouveau moteur) |
+| `code-next`             | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | ⚠️ Déprécié — migrer vers `code-1.0` |
+| `code-completion-next`  | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | ⚠️ Déprécié — migrer vers `code-completion-1.0` |
+
+> **Contexte max** = nombre de tokens par requête (entrée + sortie cumulées). L'identifiant du **moteur réel** est aussi renvoyé dans le champ `model` des réponses et dans `backend_model` de `GET /v1/models` — pratique pour vérifier exactement quel moteur traite vos requêtes.
 
 > Benchmarks réalisés en mai 2026 avec des prompts de 81–95 tokens.
 
