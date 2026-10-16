@@ -8,9 +8,11 @@ Analyse d'images en langage naturel : description, extraction de texte (OCR), le
 
 ## Catalogue
 
-| Alias    | Modèle                      | Paramètres | Usage recommandé                                   |
-| -------- | --------------------------- | ---------- | -------------------------------------------------- |
-| `vision` | Qwen3-VL-8B-Instruct (FP8)  | 8B         | Description d'image, OCR, VQA, lecture de documents |
+| Alias flottant | Nom figé     | Moteur réel (`backend_model`)     | Paramètres | Contexte max   | Usage recommandé                                    |
+| -------------- | ------------ | --------------------------------- | ---------- | -------------- | --------------------------------------------------- |
+| `vision`       | `vision-1.0` | `Qwen/Qwen3-VL-8B-Instruct-FP8`   | 8B         | 65 536 (~64K)  | Description d'image, OCR, VQA, lecture de documents |
+
+> Alias flottant (dernière version) ou nom figé (version immuable, recommandée en production) — même moteur. Le champ `model` des réponses et `backend_model` dans `GET /v1/models` renvoient l'identifiant exact du moteur. Voir [Versionnage des modèles](/documentation/versionnage-modeles).
 
 ---
 
