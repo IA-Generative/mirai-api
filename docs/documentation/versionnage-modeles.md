@@ -27,7 +27,7 @@ Chaque modèle expose désormais **deux formes de nom** : un alias court et un n
 | `code-completion`  | `code-completion-1.0`   | Qwen3.8-27B                  |
 | `vision`           | `vision-1.0`            | Qwen3-VL-8B-Instruct         |
 
-> **Transition en cours pour `code` et `code-completion`.** Le nom figé `code-1.0` (et `code-completion-1.0`) correspond au nouveau moteur **Qwen3.8-27B**. Les alias `code` et `code-completion` servent encore Qwen3.6-35B le temps de la bascule : pour tester ou adopter dès maintenant le nouveau moteur, ciblez explicitement `code-1.0` / `code-completion-1.0`.
+> **`code` et `code-completion` tournent désormais sur Qwen3.8-27B.** Les noms figés `code-1.0` / `code-completion-1.0` pointent sur le même moteur — utilisez-les si vous souhaitez garantir cette version dans le temps, même lorsque l'alias flottant évoluera.
 
 ---
 

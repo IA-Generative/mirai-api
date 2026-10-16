@@ -16,10 +16,10 @@ Chaque modèle possède un **alias flottant** (`chat`, `code`, …) et un **nom 
 | `tools-pro`             | `openai/gpt-oss-120b`           | 120B       | 131 072 (~128K)     | 124.4 | 1.03 s      | Function calling, agents (120B)      |
 | `chat`                  | `google/gemma-4-26B-A4B-it`     | 26B        | 131 072 (~128K)     | 104.0 | 1.05 s      | Interactions rapides, faible latence |
 | `tools`                 | `google/gemma-4-26B-A4B-it`     | 26B        | 131 072 (~128K)     | 107.8 | 0.95 s      | Function calling, agents (rapide)    |
-| `code`                  | `Qwen/Qwen3.6-35B-A3B`          | 35B        | 131 072 (~128K)     | —     | —           | Génération et revue de code          |
-| `code-completion`       | `Qwen/Qwen3.6-35B-A3B`          | 35B        | 131 072 (~128K)     | —     | —           | Complétion de code, copilot          |
-| `code-1.0`              | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | Génération et revue de code (nouveau moteur) |
-| `code-completion-1.0`   | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | Complétion de code, copilot (nouveau moteur) |
+| `code`                  | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | Génération et revue de code          |
+| `code-completion`       | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | Complétion de code, copilot          |
+| `code-1.0`              | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | Idem `code`, version figée           |
+| `code-completion-1.0`   | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | Idem `code-completion`, version figée |
 | `code-next`             | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | ⚠️ Déprécié — migrer vers `code-1.0` |
 | `code-completion-next`  | `Qwen/Qwen3.8-27B-FP8`          | 27B        | 262 144 (~256K)     | —     | —           | ⚠️ Déprécié — migrer vers `code-completion-1.0` |
 
@@ -76,8 +76,8 @@ Tâche complexe, synthèse longue, raisonnement    →  chat-pro
 Function calling / agents (haute qualité)        →  tools-pro
 Function calling / agents (faible latence)       →  tools
 Interaction rapide, faible latence               →  chat
-Génération ou revue de code                      →  code ou code-completion
-Nouveau moteur de code (Qwen3.8)                 →  code-1.0 ou code-completion-1.0
+Génération ou revue de code                      →  code (ou code-1.0 pour figer la version)
+Complétion de code / copilot                     →  code-completion (ou code-completion-1.0)
 ```
 
 ---
