@@ -12,6 +12,11 @@ Historique des évolutions de MirAI API's — modèles, quotas, endpoints et com
 - **LLM, niveau Découverte** — tokens/minute relevé à 50 000 (était 30 000) ; plafond journalier relevé à 1 000 000 (était 500 000).
 - **LLM, niveau Développeur** — le plafond de 8 000 000 tokens s'applique désormais sur une fenêtre de **5 h** plutôt que 24 h.
 
+### Modèles
+- **Versionnage des modèles** — chaque modèle expose désormais un alias flottant (`code`) et un nom figé versionné (`code-1.0`) ; privilégiez le nom figé en production. Voir [Versionnage des modèles](/documentation/versionnage-modeles).
+- **`code` et `code-completion` basculés sur Qwen3.8-27B** (contexte 256K), en remplacement de Qwen3.6-35B-A3B.
+- **`code-next` et `code-completion-next` dépréciés** — remplacés par `code-1.0` / `code-completion-1.0` (même moteur) ; retrait le **30 novembre 2026**.
+
 ---
 ## Septembre 2026
 
