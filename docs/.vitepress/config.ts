@@ -61,6 +61,7 @@ export default defineConfig({
           { text: 'Exemples', link: '/documentation/exemples' },
           { text: 'Jobs', link: '/documentation/jobs' },
           { text: 'Modes', link: '/documentation/modes' },
+          { text: 'Versionnage des modèles', link: '/documentation/versionnage-modeles' },
           { text: 'Quotas', link: '/documentation/quotas' },
           { text: 'Référence des erreurs', link: '/documentation/errors' },
           { text: 'FAQ', link: '/documentation/faq' },
